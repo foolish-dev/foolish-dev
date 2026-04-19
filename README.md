@@ -24,7 +24,7 @@
 ~ ❯ cat .profile
 
 stack         arch · niri · zsh · tmux · neovim
-agents        opencode · lm-studio · hexstrike-ai mcp
+agents        opencode · claude-code · lm-studio · hexstrike-ai mcp
 discipline    offensive security · automation · LLM tooling
 theme         tokyo night + pywal (wallpaper-driven)
 ethos         terminal-first, keyboard-driven, fully reproducible
@@ -36,12 +36,16 @@ ethos         terminal-first, keyboard-driven, fully reproducible
 - Hardening a [scrollable-tiling Wayland workstation](https://github.com/foolish-dev/dotfiles) — Niri, Noctalia, pywal.
 - Agentic offensive security — local LLMs into MCP-backed recon via [HexStrike AI](https://github.com/0x4m4/hexstrike-ai).
 - Poking at model alignment surgery with [heretic](https://github.com/p-e-w/heretic) abliteration runs.
+- Curating a [Tokyo Night wallpaper collection](https://github.com/foolish-dev/dotfiles/tree/main/wallpapers) for pywal-driven theming.
 
 ### Pinned
 
 <p align="center">
   <a href="https://github.com/foolish-dev/dotfiles">
     <img src="https://github-readme-stats.vercel.app/api/pin/?username=foolish-dev&repo=dotfiles&theme=tokyonight&hide_border=true&bg_color=00000000&icon_color=7aa2f7&title_color=bb9af7" alt="foolish-dev/dotfiles repo card"/>
+  </a>
+  <a href="https://github.com/foolish-dev/foolish-dev">
+    <img src="https://github-readme-stats.vercel.app/api/pin/?username=foolish-dev&repo=foolish-dev&theme=tokyonight&hide_border=true&bg_color=00000000&icon_color=7aa2f7&title_color=bb9af7" alt="foolish-dev/foolish-dev repo card"/>
   </a>
 </p>
 
@@ -66,6 +70,14 @@ ethos         terminal-first, keyboard-driven, fully reproducible
     <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/foolish-dev/foolish-dev/output/snake-light.svg"/>
     <img src="https://raw.githubusercontent.com/foolish-dev/foolish-dev/output/snake.svg" alt="Contribution snake"/>
   </picture>
+</p>
+
+### Reach me
+
+<p align="center">
+  <a href="mailto:cardoffools@gmail.com">
+    <img src="https://img.shields.io/badge/cardoffools%40gmail.com-7aa2f7?style=flat-square&logo=gmail&logoColor=white" alt="email cardoffools at gmail dot com"/>
+  </a>
 </p>
 
 <p align="center">
