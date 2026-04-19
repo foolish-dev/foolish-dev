@@ -1,7 +1,11 @@
-<h1 align="center">foolish-dev</h1>
+<p align="center">
+  <img src="assets/banner.svg" alt="foolish-dev" width="900"/>
+</p>
 
 <p align="center">
-  <em>// scrollable-tiling Wayland · offensive security · AI-augmented dev</em>
+  <a href="https://github.com/foolish-dev">
+    <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=20&duration=2800&pause=600&color=7AA2F7&center=true&vCenter=true&width=720&lines=%2F%2F+scrollable-tiling+wayland;%2F%2F+offensive+security+operator;%2F%2F+AI-augmented+developer;%2F%2F+terminal-first%2C+keyboard-driven" alt="taglines"/>
+  </a>
 </p>
 
 <p align="center">
@@ -17,39 +21,44 @@
 ---
 
 ```text
-~ whoami
-foolish-dev — building, breaking, automating
+~ ❯ cat .profile
 
-~ stack
-distro       arch + blackarch + chaotic-aur
-compositor   niri (scrollable tiling, wayland)
-shell        zsh · zinit · starship · tmux
-editor       neovim · 16 lsp servers · dap · treesitter
-agents       opencode · lm studio · hexstrike-ai mcp
-theme        tokyo night + pywal (wallpaper-driven)
-
-~ focus
-- offensive security tooling on linux
-- AI-augmented developer workflows
-- terminal-first, keyboard-driven everything
+stack         arch · niri · zsh · tmux · neovim
+agents        opencode · lm studio · hexstrike-ai mcp
+discipline    offensive security · automation · LLM tooling
+theme         tokyo night + pywal (wallpaper-driven)
+ethos         terminal-first, keyboard-driven, fully reproducible
 ```
 
----
+### Now
 
-### Currently
+- Wiring [opencode](https://opencode.ai) into editor + shell as a daily driver.
+- Hardening a [scrollable-tiling Wayland workstation](https://github.com/foolish-dev/dotfiles).
+- Exploring agentic security workflows — MCP, local models, automated recon.
 
-- Wiring [opencode](https://opencode.ai) into the editor and shell.
-- Curating a [scrollable-tiling Wayland workstation](https://github.com/foolish-dev/dotfiles).
-- Exploring agentic tooling for security research (MCP, local models).
-
-### Find me
-
-- Dotfiles: [`foolish-dev/dotfiles`](https://github.com/foolish-dev/dotfiles)
+### Pinned
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=foolish-dev&show_icons=true&theme=tokyonight&hide_border=true&bg_color=00000000" alt="GitHub stats"/>
+  <a href="https://github.com/foolish-dev/dotfiles">
+    <img src="https://github-readme-stats.vercel.app/api/pin/?username=foolish-dev&repo=dotfiles&theme=tokyonight&hide_border=true&bg_color=00000000&icon_color=7aa2f7&title_color=bb9af7" alt="dotfiles"/>
+  </a>
+</p>
+
+### Signals
+
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=foolish-dev&show_icons=true&theme=tokyonight&hide_border=true&bg_color=00000000&icon_color=7aa2f7&title_color=bb9af7&include_all_commits=true" alt="GitHub stats" height="170"/>
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=foolish-dev&layout=compact&theme=tokyonight&hide_border=true&bg_color=00000000&title_color=bb9af7&langs_count=8" alt="Top languages" height="170"/>
 </p>
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=foolish-dev&layout=compact&theme=tokyonight&hide_border=true&bg_color=00000000" alt="Top languages"/>
+  <img src="https://github-profile-trophy.vercel.app/?username=foolish-dev&theme=tokyonight&no-frame=true&no-bg=true&row=1&column=7&margin-w=8" alt="Trophies"/>
+</p>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/foolish-dev/foolish-dev/output/snake.svg" alt="Contribution snake"/>
+</p>
+
+<p align="center">
+  <sub>// keep building, keep breaking</sub>
 </p>
