@@ -1,10 +1,10 @@
 <p align="center">
-  <img src="assets/banner.svg" alt="foolish-dev"/>
+  <img src="assets/banner.svg" alt="foolish-dev — terminal-themed banner"/>
 </p>
 
 <p align="center">
   <a href="https://github.com/foolish-dev">
-    <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=20&duration=2800&pause=600&color=7AA2F7&center=true&vCenter=true&width=720&lines=%2F%2F+scrollable-tiling+wayland;%2F%2F+offensive+security+operator;%2F%2F+AI-augmented+developer;%2F%2F+terminal-first%2C+keyboard-driven" alt="taglines"/>
+    <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=20&duration=2800&pause=600&color=7AA2F7&center=true&vCenter=true&width=720&lines=%2F%2F+scrollable-tiling+wayland;%2F%2F+offensive+security+operator;%2F%2F+AI-augmented+developer;%2F%2F+terminal-first%2C+keyboard-driven" alt="scrollable-tiling wayland · offensive security operator · AI-augmented developer · terminal-first, keyboard-driven"/>
   </a>
 </p>
 
@@ -24,7 +24,7 @@
 ~ ❯ cat .profile
 
 stack         arch · niri · zsh · tmux · neovim
-agents        opencode · lm studio · hexstrike-ai mcp
+agents        opencode · lm-studio · hexstrike-ai mcp
 discipline    offensive security · automation · LLM tooling
 theme         tokyo night + pywal (wallpaper-driven)
 ethos         terminal-first, keyboard-driven, fully reproducible
@@ -41,7 +41,7 @@ ethos         terminal-first, keyboard-driven, fully reproducible
 
 <p align="center">
   <a href="https://github.com/foolish-dev/dotfiles">
-    <img src="https://github-readme-stats.vercel.app/api/pin/?username=foolish-dev&repo=dotfiles&theme=tokyonight&hide_border=true&bg_color=00000000&icon_color=7aa2f7&title_color=bb9af7" alt="dotfiles"/>
+    <img src="https://github-readme-stats.vercel.app/api/pin/?username=foolish-dev&repo=dotfiles&theme=tokyonight&hide_border=true&bg_color=00000000&icon_color=7aa2f7&title_color=bb9af7" alt="foolish-dev/dotfiles repo card"/>
   </a>
 </p>
 
