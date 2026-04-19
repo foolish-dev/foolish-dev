@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/banner.svg" alt="foolish-dev" width="900"/>
+  <img src="assets/banner.svg" alt="foolish-dev"/>
 </p>
 
 <p align="center">
@@ -32,9 +32,10 @@ ethos         terminal-first, keyboard-driven, fully reproducible
 
 ### Now
 
-- Wiring [opencode](https://opencode.ai) into editor + shell as a daily driver.
-- Hardening a [scrollable-tiling Wayland workstation](https://github.com/foolish-dev/dotfiles).
-- Exploring agentic security workflows — MCP, local models, automated recon.
+- Driving [opencode](https://opencode.ai) + Claude Code side-by-side as daily coding agents.
+- Hardening a [scrollable-tiling Wayland workstation](https://github.com/foolish-dev/dotfiles) — Niri, Noctalia, pywal.
+- Agentic offensive security — local LLMs into MCP-backed recon via [HexStrike AI](https://github.com/0x4m4/hexstrike-ai).
+- Poking at model alignment surgery with [heretic](https://github.com/p-e-w/heretic) abliteration runs.
 
 ### Pinned
 
@@ -56,7 +57,15 @@ ethos         terminal-first, keyboard-driven, fully reproducible
 </p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/foolish-dev/foolish-dev/output/snake.svg" alt="Contribution snake"/>
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=foolish-dev&theme=tokyo-night&bg_color=00000000&color=bb9af7&line=7aa2f7&point=7dcfff&area=true&area_color=7aa2f7&hide_border=true&custom_title=Commit%20activity" alt="Activity graph"/>
+</p>
+
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/foolish-dev/foolish-dev/output/snake.svg"/>
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/foolish-dev/foolish-dev/output/snake-light.svg"/>
+    <img src="https://raw.githubusercontent.com/foolish-dev/foolish-dev/output/snake.svg" alt="Contribution snake"/>
+  </picture>
 </p>
 
 <p align="center">
