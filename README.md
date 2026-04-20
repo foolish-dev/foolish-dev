@@ -32,6 +32,8 @@ ethos         terminal-first, keyboard-driven, fully reproducible
 
 ### Now
 
+<sub>// current rotation — what I'm shipping, breaking, and iterating on right now</sub>
+
 - Driving [opencode](https://opencode.ai) + Claude Code side-by-side as daily coding agents.
 - Hardening a [scrollable-tiling Wayland workstation](https://github.com/foolish-dev/dotfiles) — Niri, Noctalia, pywal.
 - Agentic offensive security — local LLMs into MCP-backed recon via [HexStrike AI](https://github.com/0x4m4/hexstrike-ai).
@@ -39,6 +41,8 @@ ethos         terminal-first, keyboard-driven, fully reproducible
 - Curating a [Tokyo Night wallpaper collection](https://github.com/foolish-dev/dotfiles/tree/main/wallpapers) for pywal-driven theming.
 
 ### Pinned
+
+<sub>// flagship repos — the workstation I live in, and this profile itself</sub>
 
 <p align="center">
   <a href="https://github.com/foolish-dev/dotfiles">
@@ -50,6 +54,8 @@ ethos         terminal-first, keyboard-driven, fully reproducible
 </p>
 
 ### Signals
+
+<sub>// stats, language mix, trophies, activity graph, and the contribution snake</sub>
 
 <p align="center">
   <img src="https://github-readme-stats.vercel.app/api?username=foolish-dev&show_icons=true&theme=tokyonight&hide_border=true&bg_color=00000000&icon_color=7aa2f7&title_color=bb9af7&include_all_commits=true" alt="GitHub stats" height="170"/>
@@ -73,6 +79,8 @@ ethos         terminal-first, keyboard-driven, fully reproducible
 </p>
 
 ### Reach me
+
+<sub>// inbox — open to collabs, security work, and agent-tooling conversations</sub>
 
 <p align="center">
   <a href="mailto:cardoffools@gmail.com">
