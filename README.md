@@ -53,27 +53,6 @@ ethos         terminal-first, keyboard-driven, fully reproducible
   </a>
 </p>
 
-### Uses
-
-<sub>// full stack — every layer of the workstation, documented in [dotfiles](https://github.com/foolish-dev/dotfiles)</sub>
-
-| Layer | Tool |
-|---|---|
-| **OS** | [Arch Linux](https://archlinux.org) + [BlackArch](https://blackarch.org) + [Chaotic AUR](https://aur.chaotic.cx) |
-| **Compositor** | [Niri](https://github.com/YaLTeR/niri) — scrollable-tiling Wayland |
-| **Desktop Shell** | [Noctalia](https://github.com/noctalia-dev/noctalia-shell) — bar, dock, panels, lock screen |
-| **Terminal** | [Kitty](https://sw.kovidgoyal.net/kitty/) (0.92 opacity, pywal colors) |
-| **Multiplexer** | [tmux](https://github.com/tmux/tmux) (Ctrl-a prefix, lazygit/btop popups) |
-| **Shell** | Zsh + [Zinit](https://github.com/zdharma-continuum/zinit) + [Starship](https://starship.rs) |
-| **Editor** | [Neovim](https://neovim.io) + lazy.nvim · 16 LSP servers · DAP · Treesitter |
-| **File Manager** | Thunar |
-| **Launcher** | Noctalia + [Fuzzel](https://codeberg.org/dnkl/fuzzel) |
-| **Display Manager** | [SDDM](https://github.com/sddm/sddm) — 5 themes, cyberpunk default |
-| **Theme** | Tokyo Night + [pywal](https://github.com/dylanaraps/pywal) (wallpaper-driven) |
-| **Git TUI** | [lazygit](https://github.com/jesseduffield/lazygit) + [delta](https://github.com/dandavison/delta) side-by-side diffs |
-| **Agents** | [opencode](https://opencode.ai) · [Claude Code](https://docs.anthropic.com/en/docs/claude-code) · [LM Studio](https://lmstudio.ai) · [HexStrike AI](https://github.com/0x4m4/hexstrike-ai) MCP |
-| **Audio** | PipeWire + WirePlumber |
-| **Fetch** | fastfetch |
 
 ### Signals
 
