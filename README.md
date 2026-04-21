@@ -1,10 +1,18 @@
 <p align="center">
-  <img src="assets/banner.svg" alt="foolish-dev — terminal-themed banner"/>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/banner.svg"/>
+    <source media="(prefers-color-scheme: light)" srcset="assets/banner-light.svg"/>
+    <img src="assets/banner.svg" alt="foolish-dev — terminal-themed banner with a mock zsh prompt running whoami"/>
+  </picture>
 </p>
 
 <p align="center">
   <a href="https://github.com/foolish-dev">
-    <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=20&duration=2800&pause=600&color=7AA2F7&center=true&vCenter=true&width=720&lines=%2F%2F+scrollable-tiling+wayland;%2F%2F+offensive+security+operator;%2F%2F+AI-augmented+developer;%2F%2F+terminal-first%2C+keyboard-driven" alt="scrollable-tiling wayland · offensive security operator · AI-augmented developer · terminal-first, keyboard-driven"/>
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=20&duration=2800&pause=600&color=7AA2F7&center=true&vCenter=true&width=720&lines=%2F%2F+scrollable-tiling+wayland;%2F%2F+offensive+security+operator;%2F%2F+AI-augmented+developer;%2F%2F+terminal-first%2C+keyboard-driven"/>
+      <source media="(prefers-color-scheme: light)" srcset="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=20&duration=2800&pause=600&color=2E7DE9&center=true&vCenter=true&width=720&lines=%2F%2F+scrollable-tiling+wayland;%2F%2F+offensive+security+operator;%2F%2F+AI-augmented+developer;%2F%2F+terminal-first%2C+keyboard-driven"/>
+      <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=20&duration=2800&pause=600&color=7AA2F7&center=true&vCenter=true&width=720&lines=%2F%2F+scrollable-tiling+wayland;%2F%2F+offensive+security+operator;%2F%2F+AI-augmented+developer;%2F%2F+terminal-first%2C+keyboard-driven" alt="scrollable-tiling wayland · offensive security operator · AI-augmented developer · terminal-first, keyboard-driven"/>
+    </picture>
   </a>
 </p>
 
@@ -46,10 +54,18 @@ ethos         terminal-first, keyboard-driven, fully reproducible
 
 <p align="center">
   <a href="https://github.com/foolish-dev/dotfiles">
-    <img src="https://github-readme-stats.vercel.app/api/pin/?username=foolish-dev&repo=dotfiles&theme=tokyonight&hide_border=true&bg_color=00000000&icon_color=7aa2f7&title_color=bb9af7" alt="foolish-dev/dotfiles — Arch + Niri + Tokyo Night workstation, BlackArch tooling, pywal theming"/>
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats.vercel.app/api/pin/?username=foolish-dev&repo=dotfiles&theme=tokyonight&hide_border=true&bg_color=00000000&icon_color=7aa2f7&title_color=bb9af7"/>
+      <source media="(prefers-color-scheme: light)" srcset="https://github-readme-stats.vercel.app/api/pin/?username=foolish-dev&repo=dotfiles&theme=tokyonight_duo&hide_border=true&bg_color=00000000&icon_color=2e7de9&title_color=9854f1"/>
+      <img src="https://github-readme-stats.vercel.app/api/pin/?username=foolish-dev&repo=dotfiles&theme=tokyonight&hide_border=true&bg_color=00000000&icon_color=7aa2f7&title_color=bb9af7" alt="foolish-dev/dotfiles — Arch + Niri + Tokyo Night workstation, BlackArch tooling, pywal theming"/>
+    </picture>
   </a>
   <a href="https://github.com/foolish-dev/foolish-dev">
-    <img src="https://github-readme-stats.vercel.app/api/pin/?username=foolish-dev&repo=foolish-dev&theme=tokyonight&hide_border=true&bg_color=00000000&icon_color=7aa2f7&title_color=bb9af7" alt="foolish-dev/foolish-dev — this GitHub profile README repository"/>
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats.vercel.app/api/pin/?username=foolish-dev&repo=foolish-dev&theme=tokyonight&hide_border=true&bg_color=00000000&icon_color=7aa2f7&title_color=bb9af7"/>
+      <source media="(prefers-color-scheme: light)" srcset="https://github-readme-stats.vercel.app/api/pin/?username=foolish-dev&repo=foolish-dev&theme=tokyonight_duo&hide_border=true&bg_color=00000000&icon_color=2e7de9&title_color=9854f1"/>
+      <img src="https://github-readme-stats.vercel.app/api/pin/?username=foolish-dev&repo=foolish-dev&theme=tokyonight&hide_border=true&bg_color=00000000&icon_color=7aa2f7&title_color=bb9af7" alt="foolish-dev/foolish-dev — this GitHub profile README repository"/>
+    </picture>
   </a>
 </p>
 
@@ -59,16 +75,32 @@ ethos         terminal-first, keyboard-driven, fully reproducible
 <sub>// stats, language mix, trophies, activity graph, and the contribution snake</sub>
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=foolish-dev&show_icons=true&theme=tokyonight&hide_border=true&bg_color=00000000&icon_color=7aa2f7&title_color=bb9af7&include_all_commits=true" alt="foolish-dev GitHub stats — commits, PRs, issues, stars" height="170"/>
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=foolish-dev&layout=compact&theme=tokyonight&hide_border=true&bg_color=00000000&title_color=bb9af7&langs_count=8" alt="foolish-dev top languages breakdown" height="170"/>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats.vercel.app/api?username=foolish-dev&show_icons=true&theme=tokyonight&hide_border=true&bg_color=00000000&icon_color=7aa2f7&title_color=bb9af7&include_all_commits=true"/>
+    <source media="(prefers-color-scheme: light)" srcset="https://github-readme-stats.vercel.app/api?username=foolish-dev&show_icons=true&theme=tokyonight_duo&hide_border=true&bg_color=00000000&icon_color=2e7de9&title_color=9854f1&include_all_commits=true"/>
+    <img src="https://github-readme-stats.vercel.app/api?username=foolish-dev&show_icons=true&theme=tokyonight&hide_border=true&bg_color=00000000&icon_color=7aa2f7&title_color=bb9af7&include_all_commits=true" alt="foolish-dev GitHub stats — commits, PRs, issues, stars" height="170"/>
+  </picture>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats.vercel.app/api/top-langs/?username=foolish-dev&layout=compact&theme=tokyonight&hide_border=true&bg_color=00000000&title_color=bb9af7&langs_count=8"/>
+    <source media="(prefers-color-scheme: light)" srcset="https://github-readme-stats.vercel.app/api/top-langs/?username=foolish-dev&layout=compact&theme=tokyonight_duo&hide_border=true&bg_color=00000000&title_color=9854f1&langs_count=8"/>
+    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=foolish-dev&layout=compact&theme=tokyonight&hide_border=true&bg_color=00000000&title_color=bb9af7&langs_count=8" alt="foolish-dev top languages breakdown" height="170"/>
+  </picture>
 </p>
 
 <p align="center">
-  <img src="https://github-profile-trophy.vercel.app/?username=foolish-dev&theme=tokyonight&no-frame=true&no-bg=true&row=1&column=7&margin-w=8" alt="foolish-dev GitHub trophies"/>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://github-profile-trophy.vercel.app/?username=foolish-dev&theme=tokyonight&no-frame=true&no-bg=true&row=1&column=7&margin-w=8"/>
+    <source media="(prefers-color-scheme: light)" srcset="https://github-profile-trophy.vercel.app/?username=foolish-dev&theme=flat&no-frame=true&no-bg=true&row=1&column=7&margin-w=8"/>
+    <img src="https://github-profile-trophy.vercel.app/?username=foolish-dev&theme=tokyonight&no-frame=true&no-bg=true&row=1&column=7&margin-w=8" alt="foolish-dev GitHub trophies"/>
+  </picture>
 </p>
 
 <p align="center">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=foolish-dev&theme=tokyo-night&bg_color=00000000&color=bb9af7&line=7aa2f7&point=7dcfff&area=true&area_color=7aa2f7&hide_border=true&custom_title=Commit%20activity" alt="foolish-dev commit activity graph over time"/>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-activity-graph.vercel.app/graph?username=foolish-dev&theme=tokyo-night&bg_color=00000000&color=bb9af7&line=7aa2f7&point=7dcfff&area=true&area_color=7aa2f7&hide_border=true&custom_title=Commit%20activity"/>
+    <source media="(prefers-color-scheme: light)" srcset="https://github-readme-activity-graph.vercel.app/graph?username=foolish-dev&bg_color=00000000&color=9854f1&line=2e7de9&point=007197&area=true&area_color=2e7de9&hide_border=true&custom_title=Commit%20activity"/>
+    <img src="https://github-readme-activity-graph.vercel.app/graph?username=foolish-dev&theme=tokyo-night&bg_color=00000000&color=bb9af7&line=7aa2f7&point=7dcfff&area=true&area_color=7aa2f7&hide_border=true&custom_title=Commit%20activity" alt="foolish-dev commit activity graph over time"/>
+  </picture>
 </p>
 
 <p align="center">
