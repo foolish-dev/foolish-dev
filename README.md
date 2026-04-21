@@ -111,14 +111,6 @@ ethos         terminal-first, keyboard-driven, fully reproducible
   </picture>
 </p>
 
-#### Coding time <sub>(last 7 days, auto-refreshed daily)</sub>
-
-<!--START_SECTION:waka-->
-```text
-Waiting on the first waka-readme run — requires WAKATIME_API_KEY in repo secrets.
-```
-<!--END_SECTION:waka-->
-
 ### Reach me
 
 <sub>// inbox and profile — open to collabs, security work, and agent-tooling conversations</sub>
