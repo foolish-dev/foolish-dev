@@ -69,7 +69,6 @@ ethos         terminal-first, keyboard-driven, fully reproducible
   </a>
 </p>
 
-
 ### Signals
 
 <sub>// stats, language mix, trophies, activity graph, and the contribution snake</sub>
