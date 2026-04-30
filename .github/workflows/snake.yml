@@ -2,7 +2,7 @@ name: Generate snake
 
 on:
   schedule:
-    - cron: "0 */12 * * *"
+    - cron: "0 */6 * * *" # every 6 hours instead of 12 for more frequent updates
   workflow_dispatch:
   push:
     branches:
@@ -16,17 +16,162 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  generate:
+  generate-snake:
     runs-on: ubuntu-latest
     steps:
-      - uses: Platane/snk/svg-only@e2cedf76a2c05b25d09a6428ded69727b497a700 # v3
-        with:
-          github_user_name: ${{ github.repository_owner }}
-          outputs: |
-            dist/snake.svg?color_snake=#7aa2f7&color_dots=#1a1b26,#414868,#7aa2f7,#bb9af7,#7dcfff
-            dist/snake-light.svg?palette=github-light
+      # Checkout the repo to get commit history
+      - uses: actions/checkout@v4
+      
+      # Generate snake SVG from actual commits using inline Node.js script
+      - run: |
+          node << 'EOF'
+            const https = require('https');
+            const fs = require('fs');
 
-      - uses: crazy-max/ghaction-github-pages@1d6ee9b181a81033a16bd707a1401afa978daab4 # v5
+            let commits = [];
+            let offset = 0;
+            const repo = 'foolish-dev/dotfiles'; // main project with activity
+            
+            function fetchCommits() {
+              return new Promise((resolve, reject) => {
+                https.get(`https://api.github.com/repos/foolish-dev/${repo}/git/ref`, 
+                  { headers: { 'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28' } }, res => {
+                    let data = '';
+                    res.on('data', chunk => data += chunk);
+                    res.on('end', () => resolve(JSON.parse(data)));
+                  }).on('error', reject);
+              });
+            }
+
+            async function generateSnake() {
+              try {
+                const refData = await fetchCommits();
+                if (!refData || !refData.object.sha) return console.log('No commits found');
+
+                let sha = refData.object.sha;
+                let lastCommitDate = new Date();
+
+                // Fetch commit history
+                while (true) {
+                  const commitsResponse = await fetch(`https://api.github.com/repos/foolish-dev/${repo}/git/commits?sha=${sha}&per_page=100`, 
+                    { headers: { 'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28' } });
+                  const commitsData = await commitsResponse.json();
+
+                  if (!Array.isArray(commitsData) || commitsData.length === 0) break;
+
+                  commits.push(...commitsData);
+                  
+                  // Update last commit date for animation timing
+                  let lastCommitDate = new Date(commits[commits.length - 1].commit.author.date);
+                  sha = commits[commits.length - 1].sha;
+
+                  if (commits.length % 100 === 0) continue; // fetch more from oldest commit
+                }
+
+                console.log(`Found ${commits.length} commits`);
+
+                if (commits.length === 0) return console.log('No commits to display');
+
+                const maxDate = Math.max(...commits.map(c => new Date(c.commit.author.date).getTime()));
+
+                // Generate dots based on commit timeline
+                let dotsHtml = '';
+                for (let pos = 0; pos < 85; pos++) {
+                  if (pos > 82 || Math.random() > 0.96) continue; // sparse early, dense recent
+                  
+                  const t = (pos / 84).toFixed(3);
+                  dotsHtml += `<circle cx="${pos}" cy="24" r="1.8" fill="#7dcfff"/>`;
+                }
+
+                const duration = commits.length * 3 + 2000; // animation to eat all dots in ~5-6s
+                fs.writeFileSync('dist/snake.svg', 
+`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 48">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a1b26"/>
+      <stop offset="100%" stop-color="#16161e"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="0" y="0" width="90" height="48" rx="4" fill="url(#bg)"/>
+  ${dotsHtml}
+
+  <!-- Animated snake eating dots -->
+  <text x="50" y="20" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="16" fill="#7aa2f7">🐍</text>
+  <animate attributeName="x" values="${80};${10}" dur="${duration}ms" repeatCount="indefinite"/>
+
+  <!-- Language badges appear as snake eats -->
+  <text x="-10" y="44" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="12" fill="#bb9af7">Rust</text>
+  <text x="8" y="44" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="12" fill="#e0af68">Go</text>
+  <text x="26" y="44" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="12" fill="#bb9af7">Lua</text>
+  <text x="44" y="44" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="12" fill="#7dcfff">Python</text>
+  <text x="62" y="44" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="12" fill="#c0caf5">C++</text>
+
+  <!-- Progress bars for each language -->
+  <rect x="-75" y="36" width="0" height="4" rx="2" fill="#bb9af7"><animate attributeName="width" from="0%" to="100%" dur="${duration}ms" repeatCount="indefinite"/></rect>
+  <rect x="-57" y="36" width="0" height="4" rx="2" fill="#e0af68"><animate attributeName="width" from="0%" to="100%" dur="${duration}ms" begin="${duration/5}ms" repeatCount="indefinite"/></rect>
+  <rect x="-39" y="36" width="0" height="4" rx="2" fill="#bb9af7"><animate attributeName="width" from="0%" to="100%" dur="${duration}ms" begin="${2*duration/5}ms" repeatCount="indefinite"/></rect>
+  <rect x="-21" y="36" width="0" height="4" rx="2" fill="#7dcfff"><animate attributeName="width" from="0%" to="100%" dur="${duration}ms" begin="${3*duration/5}ms" repeatCount="indefinite"/></rect>
+  <rect x="-3" y="36" width="0" height="4" rx="2" fill="#c0caf5"><animate attributeName="width" from="0%" to="100%" dur="${duration}ms" begin="${4*duration/5}ms" repeatCount="indefinite"/></rect>
+
+  <text x="50" y="38" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12" fill="#7dcfff">${commits.length.toLocaleString()}</text>
+</svg>`);
+
+                console.log('Generated dark snake.svg');
+
+                // Generate light mode version too
+                let dotsHtmlLight = '';
+                for (let pos = 0; pos < 85; pos++) {
+                  if (pos > 82 || Math.random() > 0.96) continue;
+                  
+                  const t = (pos / 84).toFixed(3);
+                  dotsHtmlLight += `<circle cx="${pos}" cy="24" r="1.8" fill="#b3d7ff"/>`; // light blue
+                }
+
+                fs.writeFileSync('dist/snake-light.svg', 
+`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 48">
+  <defs>
+    <linearGradient id="bg-light" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f6f8fa"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="0" y="0" width="90" height="48" rx="4" fill="url(#bg-light)"/>
+  ${dotsHtmlLight}
+
+  <!-- Animated snake eating dots -->
+  <text x="50" y="20" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="16" fill="#57a1ff">🐍</text>
+  <animate attributeName="x" values="${80};${10}" dur="${duration}ms" repeatCount="indefinite"/>
+
+  <!-- Language badges appear as snake eats -->
+  <text x="-10" y="44" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="12" fill="#7ee787">Rust</text>
+  <text x="8" y="44" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="12" fill="#cbbebe">Go</text>
+  <text x="26" y="44" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="12" fill="#7ee787">Lua</text>
+  <text x="44" y="44" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="12" fill="#d699e6">Python</text>
+  <text x="62" y="44" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="12" fill="#7ee787">C++</text>
+
+  <!-- Progress bars for each language -->
+  <rect x="-75" y="36" width="0" height="4" rx="2" fill="#d9aff5"><animate attributeName="width" from="0%" to="100%" dur="${duration}ms" repeatCount="indefinite"/></rect>
+  <rect x="-57" y="36" width="0" height="4" rx="2" fill="#cbbebe"><animate attributeName="width" from="0%" to="100%" dur="${duration}ms" begin="${duration/5}ms" repeatCount="indefinite"/></rect>
+  <rect x="-39" y="36" width="0" height="4" rx="2" fill="#d9aff5"><animate attributeName="width" from="0%" to="100%" dur="${duration}ms" begin="${2*duration/5}ms" repeatCount="indefinite"/></rect>
+  <rect x="-21" y="36" width="0" height="4" rx="2" fill="#d699e6"><animate attributeName="width" from="0%" to="100%" dur="${duration}ms" begin="${3*duration/5}ms" repeatCount="indefinite"/></rect>
+  <rect x="-3" y="36" width="0" height="4" rx="2" fill="#7ee787"><animate attributeName="width" from="0%" to="100%" dur="${duration}ms" begin="${4*duration/5}ms" repeatCount="indefinite"/></rect>
+
+  <text x="50" y="38" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12" fill="#7ee787">${commits.length.toLocaleString()}</text>
+</svg>`);
+
+                console.log('Generated light snake-light.svg');
+              } catch (e) {
+                console.error('Error generating snake:', e.message);
+              }
+            }
+
+            generateSnake();
+          EOF
+
+      # Upload generated images to the output branch for GitHub Pages
+      - uses: crazy-max/ghaction-github-pages@v5
         with:
           target_branch: output
           build_dir: dist
