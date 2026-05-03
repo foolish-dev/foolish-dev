@@ -43,21 +43,21 @@ ethos         terminal-first, keyboard-driven, fully reproducible
 <sub>// current rotation — what I'm shipping, breaking, and iterating on right now</sub>
 
 - Driving [opencode](https://opencode.ai) + Claude Code side-by-side as daily coding agents.
-- Hardening a [scrollable-tiling Wayland workstation](https://github.com/foolish-dev/dotfiles) — Niri, Noctalia, pywal.
+- Hardening a [scrollable-tiling Wayland workstation](https://github.com/foolish-dev/niri-dotfiles) — Niri, Noctalia, pywal.
 - Agentic offensive security — local LLMs into MCP-backed recon via [HexStrike AI](https://github.com/0x4m4/hexstrike-ai).
-- Poking at model alignment surgery with [heretic](https://github.com/p-e-w/heretic) abliteration runs.
-- Curating a [Tokyo Night wallpaper collection](https://github.com/foolish-dev/dotfiles/tree/main/wallpapers) for pywal-driven theming.
+- Shipping [heretic](https://github.com/p-e-w/heretic) abliteration runs to [Hugging Face](https://huggingface.co/FoolDev) — [Janus](https://huggingface.co/FoolDev/janus) (35B) and [Janus-27B](https://huggingface.co/FoolDev/janus-27b).
+- Curating a [Tokyo Night wallpaper collection](https://github.com/foolish-dev/niri-dotfiles/tree/main/wallpapers) for pywal-driven theming.
 
 ### Pinned
 
 <sub>// flagship repos — the workstation I live in, and this profile itself</sub>
 
 <p align="center">
-  <a href="https://github.com/foolish-dev/dotfiles">
+  <a href="https://github.com/foolish-dev/niri-dotfiles">
     <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats.vercel.app/api/pin/?username=foolish-dev&repo=dotfiles&theme=tokyonight&hide_border=true&bg_color=00000000&icon_color=7aa2f7&title_color=bb9af7"/>
-      <source media="(prefers-color-scheme: light)" srcset="https://github-readme-stats.vercel.app/api/pin/?username=foolish-dev&repo=dotfiles&theme=tokyonight_duo&hide_border=true&bg_color=00000000&icon_color=2e7de9&title_color=9854f1"/>
-      <img src="https://github-readme-stats.vercel.app/api/pin/?username=foolish-dev&repo=dotfiles&theme=tokyonight&hide_border=true&bg_color=00000000&icon_color=7aa2f7&title_color=bb9af7" alt="foolish-dev/dotfiles — Arch + Niri + Tokyo Night workstation, BlackArch tooling, pywal theming"/>
+      <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats.vercel.app/api/pin/?username=foolish-dev&repo=niri-dotfiles&theme=tokyonight&hide_border=true&bg_color=00000000&icon_color=7aa2f7&title_color=bb9af7"/>
+      <source media="(prefers-color-scheme: light)" srcset="https://github-readme-stats.vercel.app/api/pin/?username=foolish-dev&repo=niri-dotfiles&theme=tokyonight_duo&hide_border=true&bg_color=00000000&icon_color=2e7de9&title_color=9854f1"/>
+      <img src="https://github-readme-stats.vercel.app/api/pin/?username=foolish-dev&repo=niri-dotfiles&theme=tokyonight&hide_border=true&bg_color=00000000&icon_color=7aa2f7&title_color=bb9af7" alt="foolish-dev/niri-dotfiles — Arch + Niri + Tokyo Night workstation, BlackArch tooling, pywal theming"/>
     </picture>
   </a>
   <a href="https://github.com/foolish-dev/foolish-dev">
@@ -120,6 +120,9 @@ ethos         terminal-first, keyboard-driven, fully reproducible
   </a>
   <a href="https://github.com/foolish-dev">
     <img src="https://img.shields.io/github/followers/foolish-dev?style=flat-square&logo=github&logoColor=white&label=follow&color=bb9af7" alt="Follow foolish-dev on GitHub"/>
+  </a>
+  <a href="https://huggingface.co/FoolDev">
+    <img src="https://img.shields.io/badge/%F0%9F%A4%97%20FoolDev-7dcfff?style=flat-square&logo=huggingface&logoColor=white" alt="Hugging Face profile FoolDev"/>
   </a>
 </p>
 
