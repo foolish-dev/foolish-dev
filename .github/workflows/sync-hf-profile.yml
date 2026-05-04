@@ -48,29 +48,6 @@ jobs:
           pathlib.Path(".hf-out/README.md").write_text(out, encoding="utf-8")
           PY
 
-      - name: Debug HF token (length + permissions, value masked)
-        env:
-          HF_TOKEN: ${{ secrets.HF_TOKEN }}
-        run: |
-          python <<'PY'
-          import os, hashlib, json, urllib.request
-          tok = os.environ.get("HF_TOKEN", "")
-          print("token length:", len(tok))
-          print("starts with hf_:", tok.startswith("hf_"))
-          print("sha256[:12]:", hashlib.sha256(tok.encode()).hexdigest()[:12])
-          req = urllib.request.Request("https://huggingface.co/api/whoami-v2",
-                                       headers={"Authorization": f"Bearer {tok}"})
-          try:
-              with urllib.request.urlopen(req) as r:
-                  d = json.load(r)
-              print("whoami status: 200")
-              print("user:", d.get("name"))
-              fg = d.get("auth",{}).get("accessToken",{}).get("fineGrained",{})
-              print("permissions:", json.dumps(fg, indent=2))
-          except Exception as e:
-              print("whoami failed:", e)
-          PY
-
       - name: Push README to FoolDev/FoolDev on the Hub
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
