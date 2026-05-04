@@ -2,6 +2,8 @@
 
 [![scrollable-tiling wayland · offensive security operator · AI-augmented developer · terminal-first, keyboard-driven](https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=20&duration=2800&pause=600&color=7AA2F7&center=true&vCenter=true&width=720&lines=%2F%2F+scrollable-tiling+wayland;%2F%2F+offensive+security+operator;%2F%2F+AI-augmented+developer;%2F%2F+terminal-first%2C+keyboard-driven)](https://github.com/foolish-dev)
 
+> *agentic offsec · Janus 35B/27B abliteration · arch+niri*  ·  [🤗 live on Hugging Face](https://huggingface.co/spaces/FoolDev/FoolDev)
+
 ![Arch Linux](https://img.shields.io/badge/Arch_Linux-1793D1?style=flat-square&logo=archlinux&logoColor=white)
 ![Niri](https://img.shields.io/badge/Niri-7aa2f7?style=flat-square&logo=wayland&logoColor=white)
 ![Neovim](https://img.shields.io/badge/Neovim-57A143?style=flat-square&logo=neovim&logoColor=white)
