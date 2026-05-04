@@ -1,0 +1,67 @@
+name: Sync README to Hugging Face profile
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - README.md
+      - .github/workflows/sync-hf-profile.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sync-hf-profile
+  cancel-in-progress: true
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install huggingface_hub
+        run: pip install --quiet "huggingface_hub>=0.25"
+
+      - name: Rewrite relative asset paths to absolute raw URLs
+        run: |
+          mkdir -p .hf-out
+          # Rewrite srcset/src="assets/..." -> raw.githubusercontent.com/<owner>/<repo>/main/assets/...
+          # so the Hugging Face mirror can resolve images that live in this GitHub repo.
+          python <<'PY'
+          import os, re, pathlib
+          repo = os.environ["GITHUB_REPOSITORY"]  # e.g. foolish-dev/foolish-dev
+          base = f"https://raw.githubusercontent.com/{repo}/main/"
+          src = pathlib.Path("README.md").read_text(encoding="utf-8")
+          # Match src="assets/..." and srcset="assets/..." (un-rooted relative paths only)
+          out = re.sub(
+              r'((?:src|srcset)=")(?!https?://|/|#)(assets/[^"]+)(")',
+              lambda m: f"{m.group(1)}{base}{m.group(2)}{m.group(3)}",
+              src,
+          )
+          pathlib.Path(".hf-out/README.md").write_text(out, encoding="utf-8")
+          PY
+
+      - name: Push README to FoolDev/FoolDev on the Hub
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          python <<'PY'
+          import os
+          from huggingface_hub import HfApi
+          api = HfApi(token=os.environ["HF_TOKEN"])
+          api.upload_file(
+              path_or_fileobj=".hf-out/README.md",
+              path_in_repo="README.md",
+              repo_id="FoolDev/FoolDev",
+              repo_type="model",
+              commit_message=f"Sync README from {os.environ.get('GITHUB_REPOSITORY')}@{os.environ.get('GITHUB_SHA','')[:7]}",
+          )
+          print("Uploaded README.md to FoolDev/FoolDev")
+          PY
