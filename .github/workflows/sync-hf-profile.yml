@@ -29,26 +29,74 @@ jobs:
       - name: Install huggingface_hub
         run: pip install --quiet "huggingface_hub>=0.25"
 
-      - name: Rewrite relative asset paths to absolute raw URLs
+      - name: Build HF README (rewrite asset paths + preserve Space frontmatter)
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
           mkdir -p .hf-out
-          # Rewrite srcset/src="assets/..." -> raw.githubusercontent.com/<owner>/<repo>/main/assets/...
-          # so the Hugging Face mirror can resolve images that live in this GitHub repo.
           python <<'PY'
-          import os, re, pathlib
-          repo = os.environ["GITHUB_REPOSITORY"]  # e.g. foolish-dev/foolish-dev
+          import os, re, pathlib, urllib.request
+          repo = os.environ["GITHUB_REPOSITORY"]  # foolish-dev/foolish-dev
           base = f"https://raw.githubusercontent.com/{repo}/main/"
+
+          # 1. Rewrite relative asset references (src=, srcset=, and ![](assets/...))
+          #    so HF can resolve images that live only in the GitHub repo.
           src = pathlib.Path("README.md").read_text(encoding="utf-8")
-          # Match src="assets/..." and srcset="assets/..." (un-rooted relative paths only)
-          out = re.sub(
+          src = re.sub(
               r'((?:src|srcset)=")(?!https?://|/|#)(assets/[^"]+)(")',
-              lambda m: f"{m.group(1)}{base}{m.group(2)}{m.group(3)}",
+              lambda m: m.group(1) + base + m.group(2) + m.group(3),
               src,
           )
+          src = re.sub(
+              r'(!\[[^\]]*\]\()(?!https?://|/|#)(assets/[^)]+)(\))',
+              lambda m: m.group(1) + base + m.group(2) + m.group(3),
+              src,
+          )
+
+          # 2. Strip any leading YAML frontmatter that may already be in the GitHub
+          #    README (we replace it from the live Space below).
+          if src.startswith("---\n"):
+              end = src.find("\n---\n", 4)
+              if end != -1:
+                  src = src[end + len("\n---\n"):].lstrip("\n")
+
+          # 3. Fetch the live Space README and pull its YAML frontmatter so we
+          #    don't clobber Space metadata (title, sdk: static, pinned, ...).
+          req = urllib.request.Request(
+              "https://huggingface.co/spaces/FoolDev/FoolDev/raw/main/README.md",
+              headers={"Authorization": f"Bearer {os.environ['HF_TOKEN']}"},
+          )
+          frontmatter = ""
+          try:
+              with urllib.request.urlopen(req, timeout=15) as r:
+                  cur = r.read().decode("utf-8")
+              if cur.startswith("---\n"):
+                  end = cur.find("\n---\n", 4)
+                  if end != -1:
+                      frontmatter = cur[: end + len("\n---\n")]
+          except Exception as e:
+              print(f"warning: could not fetch existing Space frontmatter: {e}")
+
+          # Fallback frontmatter if the Space README wasn't reachable.
+          if not frontmatter:
+              frontmatter = (
+                  "---\n"
+                  "title: FoolDev\n"
+                  "emoji: ⚡\n"
+                  "colorFrom: blue\n"
+                  "colorTo: purple\n"
+                  "sdk: static\n"
+                  "pinned: true\n"
+                  "short_description: profile card · Janus models · dotfiles · agents\n"
+                  "---\n"
+              )
+
+          out = frontmatter + "\n" + src.lstrip("\n")
           pathlib.Path(".hf-out/README.md").write_text(out, encoding="utf-8")
+          print(f"hf README built: {len(out)} bytes, frontmatter preserved")
           PY
 
-      - name: Push README to FoolDev/FoolDev on the Hub
+      - name: Push README to FoolDev/FoolDev (Space) on the Hub
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
@@ -60,8 +108,8 @@ jobs:
               path_or_fileobj=".hf-out/README.md",
               path_in_repo="README.md",
               repo_id="FoolDev/FoolDev",
-              repo_type="model",
+              repo_type="space",
               commit_message=f"Sync README from {os.environ.get('GITHUB_REPOSITORY')}@{os.environ.get('GITHUB_SHA','')[:7]}",
           )
-          print("Uploaded README.md to FoolDev/FoolDev")
+          print("Uploaded README.md to space FoolDev/FoolDev")
           PY
