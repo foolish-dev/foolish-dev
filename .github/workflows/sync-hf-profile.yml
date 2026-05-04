@@ -29,7 +29,7 @@ jobs:
       - name: Install huggingface_hub
         run: pip install --quiet "huggingface_hub>=0.25"
 
-      - name: Build HF README (rewrite asset paths + preserve Space frontmatter)
+      - name: Build HF READMEs (rewrite asset paths, preserve Space frontmatter)
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
@@ -41,24 +41,25 @@ jobs:
 
           # 1. Rewrite relative asset references (src=, srcset=, and ![](assets/...))
           #    so HF can resolve images that live only in the GitHub repo.
-          src = pathlib.Path("README.md").read_text(encoding="utf-8")
-          src = re.sub(
+          body = pathlib.Path("README.md").read_text(encoding="utf-8")
+          body = re.sub(
               r'((?:src|srcset)=")(?!https?://|/|#)(assets/[^"]+)(")',
               lambda m: m.group(1) + base + m.group(2) + m.group(3),
-              src,
+              body,
           )
-          src = re.sub(
+          body = re.sub(
               r'(!\[[^\]]*\]\()(?!https?://|/|#)(assets/[^)]+)(\))',
               lambda m: m.group(1) + base + m.group(2) + m.group(3),
-              src,
+              body,
           )
 
-          # 2. Strip any leading YAML frontmatter that may already be in the GitHub
-          #    README (we replace it from the live Space below).
-          if src.startswith("---\n"):
-              end = src.find("\n---\n", 4)
+          # 2. Strip any leading YAML frontmatter that may already be in the
+          #    GitHub README (we replace it from the live Space below for the
+          #    Space target; the model target gets the body verbatim).
+          if body.startswith("---\n"):
+              end = body.find("\n---\n", 4)
               if end != -1:
-                  src = src[end + len("\n---\n"):].lstrip("\n")
+                  body = body[end + len("\n---\n"):].lstrip("\n")
 
           # 3. Fetch the live Space README and pull its YAML frontmatter so we
           #    don't clobber Space metadata (title, sdk: static, pinned, ...).
@@ -91,12 +92,16 @@ jobs:
                   "---\n"
               )
 
-          out = frontmatter + "\n" + src.lstrip("\n")
-          pathlib.Path(".hf-out/README.md").write_text(out, encoding="utf-8")
-          print(f"hf README built: {len(out)} bytes, frontmatter preserved")
+          # Space README needs frontmatter; the profile-card model README does not.
+          space_md = frontmatter + "\n" + body.lstrip("\n")
+          model_md = body.lstrip("\n")
+          pathlib.Path(".hf-out/space-README.md").write_text(space_md, encoding="utf-8")
+          pathlib.Path(".hf-out/model-README.md").write_text(model_md, encoding="utf-8")
+          print(f"space README: {len(space_md)} bytes (frontmatter preserved)")
+          print(f"model README: {len(model_md)} bytes (no frontmatter)")
           PY
 
-      - name: Push README to FoolDev/FoolDev (Space) on the Hub
+      - name: Push READMEs to FoolDev/FoolDev (Space + profile-card model)
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
@@ -104,12 +109,18 @@ jobs:
           import os
           from huggingface_hub import HfApi
           api = HfApi(token=os.environ["HF_TOKEN"])
-          api.upload_file(
-              path_or_fileobj=".hf-out/README.md",
-              path_in_repo="README.md",
-              repo_id="FoolDev/FoolDev",
-              repo_type="space",
-              commit_message=f"Sync README from {os.environ.get('GITHUB_REPOSITORY')}@{os.environ.get('GITHUB_SHA','')[:7]}",
-          )
-          print("Uploaded README.md to space FoolDev/FoolDev")
+          msg = f"Sync README from {os.environ.get('GITHUB_REPOSITORY')}@{os.environ.get('GITHUB_SHA','')[:7]}"
+          targets = [
+              (".hf-out/space-README.md", "space",  "Space FoolDev/FoolDev"),
+              (".hf-out/model-README.md", "model",  "model  FoolDev/FoolDev (huggingface.co/FoolDev profile card)"),
+          ]
+          for local, kind, label in targets:
+              api.upload_file(
+                  path_or_fileobj=local,
+                  path_in_repo="README.md",
+                  repo_id="FoolDev/FoolDev",
+                  repo_type=kind,
+                  commit_message=msg,
+              )
+              print(f"Uploaded README.md -> {label}")
           PY
