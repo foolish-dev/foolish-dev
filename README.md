@@ -35,6 +35,7 @@ stack         arch · niri · zsh · tmux · neovim
 agents        opencode · claude-code · lm-studio · hexstrike-ai mcp
 discipline    offensive security · automation · LLM tooling
 theme         tokyo night + pywal (wallpaper-driven)
+mirror        github → huggingface.co/FoolDev (auto-synced)
 ethos         terminal-first, keyboard-driven, fully reproducible
 ```
 
