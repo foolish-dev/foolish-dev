@@ -2,7 +2,7 @@
 
 [![scrollable-tiling wayland · offensive security operator · AI-augmented developer · terminal-first, keyboard-driven](https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=20&duration=2800&pause=600&color=7AA2F7&center=true&vCenter=true&width=720&lines=%2F%2F+scrollable-tiling+wayland;%2F%2F+offensive+security+operator;%2F%2F+AI-augmented+developer;%2F%2F+terminal-first%2C+keyboard-driven)](https://github.com/foolish-dev)
 
-> *agentic offsec · Janus 35B/27B abliteration · arch+niri*  ·  [🤗 live on Hugging Face](https://huggingface.co/spaces/FoolDev/FoolDev)
+> *agentic offsec · Janus 35B + Thanatos 27B abliteration · arch+niri*  ·  [🤗 live on Hugging Face](https://huggingface.co/spaces/FoolDev/FoolDev)
 
 ![Arch Linux](https://img.shields.io/badge/Arch_Linux-1793D1?style=flat-square&logo=archlinux&logoColor=white)
 ![Niri](https://img.shields.io/badge/Niri-7aa2f7?style=flat-square&logo=wayland&logoColor=white)
@@ -32,7 +32,7 @@ ethos         terminal-first, keyboard-driven, fully reproducible
 - Driving [opencode](https://opencode.ai) + Claude Code side-by-side as daily coding agents.
 - Hardening a [scrollable-tiling Wayland workstation](https://github.com/foolish-dev/niri-dotfiles) — Niri, Noctalia, pywal.
 - Agentic offensive security — local LLMs into MCP-backed recon via [HexStrike AI](https://github.com/0x4m4/hexstrike-ai).
-- Shipping [heretic](https://github.com/p-e-w/heretic) abliteration runs to Hugging Face — [Janus](https://huggingface.co/FoolDev/janus) (35B-A3B MoE) and [Janus-27B](https://huggingface.co/FoolDev/janus-27b) (dense).
+- Shipping [heretic](https://github.com/p-e-w/heretic) abliteration runs to Hugging Face — [Janus](https://huggingface.co/FoolDev/janus) (35B-A3B MoE) and [Thanatos-27B](https://huggingface.co/FoolDev/Thanatos-27B) (dense).
 - Curating a [Tokyo Night wallpaper collection](https://github.com/foolish-dev/niri-dotfiles/tree/main/wallpapers) for pywal-driven theming.
 
 ### On Hugging Face
@@ -40,9 +40,9 @@ ethos         terminal-first, keyboard-driven, fully reproducible
 <sub>// models published here, kept in sync with the Modelfile / bridge-files dual setup</sub>
 
 - **[FoolDev/janus](https://huggingface.co/FoolDev/janus)** — Janus-35B (Qwen 3.6 35B-A3B MoE, 3B active), Q4_K_M ~19 GB. Tools / thinking capabilities wired via root-level `template` / `system` / `params` files.
-- **[FoolDev/janus-27b](https://huggingface.co/FoolDev/janus-27b)** — Janus-27B (Qwen 3.6 27B dense), Q4_K_M ~17 GB and Q3_K_S ~12 GB. Same bridge-file setup, plus an `examples/` + `scripts/` tooling layer (smoke + bench + bridge-sync regression guards).
+- **[FoolDev/Thanatos-27B](https://huggingface.co/FoolDev/Thanatos-27B)** — Thanatos-27B (Qwen 3.6 27B dense), Q4_K_M ~17 GB and Q3_K_S ~12 GB. Same bridge-file setup, plus an `examples/` + `scripts/` tooling layer (smoke + bench + bridge-sync regression guards).
 
-Both repos: `ollama run hf.co/FoolDev/janus[-27b]:Q4_K_M`. Tool calls round-trip end-to-end through `/api/chat` and `/v1/chat/completions`.
+Run with `ollama run hf.co/FoolDev/janus:Q4_K_M` or `ollama run hf.co/FoolDev/Thanatos-27B:Q4_K_M`. Tool calls round-trip end-to-end through `/api/chat` and `/v1/chat/completions`.
 
 ### Pinned
 
