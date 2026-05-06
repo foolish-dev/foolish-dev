@@ -4,13 +4,13 @@
 
 > *agentic offsec · Janus 35B + Thanatos 27B · arch+niri*  ·  [🤗 live on Hugging Face](https://huggingface.co/spaces/FoolDev/FoolDev)
 
-![Arch Linux](https://img.shields.io/badge/Arch_Linux-1793D1?style=flat-square&logo=archlinux&logoColor=white)
-![Niri](https://img.shields.io/badge/Niri-7aa2f7?style=flat-square&logo=wayland&logoColor=white)
-![Neovim](https://img.shields.io/badge/Neovim-57A143?style=flat-square&logo=neovim&logoColor=white)
-![Rust](https://img.shields.io/badge/Rust-000000?style=flat-square&logo=rust&logoColor=white)
-![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
-![Go](https://img.shields.io/badge/Go-00ADD8?style=flat-square&logo=go&logoColor=white)
-![Lua](https://img.shields.io/badge/Lua-2C2D72?style=flat-square&logo=lua&logoColor=white)
+![Arch Linux](https://img.shields.io/badge/Arch_Linux-7aa2f7?style=flat-square&logo=archlinux&logoColor=1a1b26)
+![Niri](https://img.shields.io/badge/Niri-bb9af7?style=flat-square&logo=wayland&logoColor=1a1b26)
+![Neovim](https://img.shields.io/badge/Neovim-9ece6a?style=flat-square&logo=neovim&logoColor=1a1b26)
+![Rust](https://img.shields.io/badge/Rust-ff9e64?style=flat-square&logo=rust&logoColor=1a1b26)
+![Python](https://img.shields.io/badge/Python-e0af68?style=flat-square&logo=python&logoColor=1a1b26)
+![Go](https://img.shields.io/badge/Go-7dcfff?style=flat-square&logo=go&logoColor=1a1b26)
+![Lua](https://img.shields.io/badge/Lua-f7768e?style=flat-square&logo=lua&logoColor=1a1b26)
 
 ---
 
@@ -25,17 +25,21 @@ mirror        github → huggingface.co/FoolDev (auto-synced)
 ethos         terminal-first, keyboard-driven, fully reproducible
 ```
 
-### Now
+---
+
+### ❯ Now
 
 <sub>// current rotation — what I'm shipping, breaking, and iterating on right now</sub>
 
 - Driving [opencode](https://opencode.ai) + Claude Code side-by-side as daily coding agents.
 - Hardening a [scrollable-tiling Wayland workstation](https://github.com/foolish-dev/niri-dotfiles) — Niri, Noctalia, pywal.
 - Agentic offensive security — local LLMs into MCP-backed recon via [HexStrike AI](https://github.com/0x4m4/hexstrike-ai).
-- Shipping [heretic](https://github.com/p-e-w/heretic) abliteration runs to Hugging Face — [Janus](https://huggingface.co/FoolDev/janus) (35B-A3B MoE) and [Thanatos-27B](https://huggingface.co/FoolDev/Thanatos-27B) (dense).
+- Shipping [heretic](https://github.com/p-e-w/heretic) abliteration runs to Hugging Face — see below.
 - Curating a [Tokyo Night wallpaper collection](https://github.com/foolish-dev/niri-dotfiles/tree/main/wallpapers) for pywal-driven theming.
 
-### On Hugging Face
+---
+
+### ❯ On Hugging Face
 
 <sub>// models published here, kept in sync with the Modelfile / bridge-files dual setup</sub>
 
@@ -44,14 +48,18 @@ ethos         terminal-first, keyboard-driven, fully reproducible
 
 Run with `ollama run hf.co/FoolDev/janus:Q4_K_M` or `ollama run hf.co/FoolDev/Thanatos-27B:Q4_K_M`. Tool calls round-trip end-to-end through `/api/chat` and `/v1/chat/completions`.
 
-### Pinned
+---
+
+### ❯ Pinned
 
 <sub>// flagship repos — the workstation I live in, and this profile itself</sub>
 
 [![foolish-dev/niri-dotfiles — Arch + Niri + Tokyo Night workstation, BlackArch tooling, pywal theming](https://github-readme-stats.vercel.app/api/pin/?username=foolish-dev&repo=niri-dotfiles&theme=tokyonight&hide_border=true&bg_color=00000000&icon_color=7aa2f7&title_color=bb9af7)](https://github.com/foolish-dev/niri-dotfiles)
 [![foolish-dev/foolish-dev — this GitHub profile README repository](https://github-readme-stats.vercel.app/api/pin/?username=foolish-dev&repo=foolish-dev&theme=tokyonight&hide_border=true&bg_color=00000000&icon_color=7aa2f7&title_color=bb9af7)](https://github.com/foolish-dev/foolish-dev)
 
-### Signals
+---
+
+### ❯ Signals
 
 <sub>// stats, language mix, trophies, activity graph, and the contribution snake</sub>
 
@@ -64,12 +72,16 @@ Run with `ollama run hf.co/FoolDev/janus:Q4_K_M` or `ollama run hf.co/FoolDev/Th
 
 ![foolish-dev contribution graph animated as a snake eating the contribution dots](https://raw.githubusercontent.com/foolish-dev/foolish-dev/output/snake.svg)
 
-### Reach me
+---
+
+### ❯ Reach me
 
 <sub>// inbox and profile — open to collabs, security work, and agent-tooling conversations</sub>
 
-[![email cardoffools at gmail dot com](https://img.shields.io/badge/cardoffools%40gmail.com-7aa2f7?style=flat-square&logo=gmail&logoColor=white)](mailto:cardoffools@gmail.com)
-[![Follow foolish-dev on GitHub](https://img.shields.io/github/followers/foolish-dev?style=flat-square&logo=github&logoColor=white&label=follow&color=bb9af7)](https://github.com/foolish-dev)
-[![Hugging Face profile FoolDev](https://img.shields.io/badge/%F0%9F%A4%97%20FoolDev-7dcfff?style=flat-square&logo=huggingface&logoColor=white)](https://huggingface.co/FoolDev)
+[![email cardoffools at gmail dot com](https://img.shields.io/badge/cardoffools%40gmail.com-7aa2f7?style=flat-square&logo=gmail&logoColor=1a1b26&labelColor=24283b)](mailto:cardoffools@gmail.com)
+[![Follow foolish-dev on GitHub](https://img.shields.io/github/followers/foolish-dev?style=flat-square&logo=github&logoColor=c0caf5&label=follow&labelColor=24283b&color=bb9af7)](https://github.com/foolish-dev)
+[![Hugging Face profile FoolDev](https://img.shields.io/badge/%F0%9F%A4%97%20FoolDev-7dcfff?style=flat-square&logo=huggingface&logoColor=1a1b26&labelColor=24283b)](https://huggingface.co/FoolDev)
+
+---
 
 <sub>// keep building, keep breaking</sub>
