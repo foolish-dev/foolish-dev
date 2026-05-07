@@ -43,7 +43,7 @@ ethos         terminal-first, keyboard-driven, fully reproducible
 
 <sub>// models published here, kept in sync with the Modelfile / bridge-files dual setup</sub>
 
-- **[FoolDev/janus](https://huggingface.co/FoolDev/janus)** — Janus-35B (Qwen 3.6 35B-A3B MoE, 3B active), Q4_K_M ~19 GB. Tools / thinking capabilities wired via root-level `template` / `system` / `params` files.
+- **[FoolDev/Janus-35B](https://huggingface.co/FoolDev/janus)** — Janus-35B (Qwen 3.6 35B-A3B MoE, 3B active), Q4_K_M ~19 GB. Tools / thinking capabilities wired via root-level `template` / `system` / `params` files.
 - **[FoolDev/Thanatos-27B](https://huggingface.co/FoolDev/Thanatos-27B)** — Thanatos-27B (Qwen 3.6 27B dense), Q4_K_M ~17 GB and Q3_K_S ~12 GB. Same bridge-file setup, plus an `examples/` + `scripts/` tooling layer (smoke + bench + bridge-sync regression guards).
 
 Run with `ollama run hf.co/FoolDev/janus:Q4_K_M` or `ollama run hf.co/FoolDev/Thanatos-27B:Q4_K_M`. Tool calls round-trip end-to-end through `/api/chat` and `/v1/chat/completions`.
