@@ -8,6 +8,11 @@ on:
       - README.md
       - .github/workflows/sync-hf-profile.yml
   workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Build the staged README without uploading to the HF Space"
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -19,6 +24,8 @@ concurrency:
 jobs:
   sync:
     runs-on: ubuntu-latest
+    env:
+      DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run == true }}
     steps:
       - uses: actions/checkout@v4
 
@@ -36,8 +43,7 @@ jobs:
       - name: Install huggingface_hub
         run: pip install --quiet "huggingface_hub>=0.25"
 
-      - name: Dry-run (no upload)
-        if: github.event_name == 'workflow_dispatch' && github.event.inputs.dry_run == 'true'
+      - name: Build staged README
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
@@ -104,7 +110,15 @@ jobs:
           print(f"hf README: {len(out)} bytes (frontmatter preserved)")
           PY
 
+      - name: Upload staged README artifact (dry-run)
+        if: env.DRY_RUN == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: hf-staged-readme
+          path: .hf-out/README.md
+
       - name: Push README to FoolDev/FoolDev Space
+        if: env.DRY_RUN != 'true'
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
