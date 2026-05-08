@@ -52,10 +52,10 @@ Run with `ollama run hf.co/FoolDev/janus:Q4_K_M` or `ollama run hf.co/FoolDev/Th
 
 ### ❯ Pinned
 
-<sub>// flagship repos — the workstation I live in, and this profile itself</sub>
+<sub>// flagship work — the workstation I live in, and the model I'm shipping on it</sub>
 
 [![foolish-dev/niri-dotfiles — Arch + Niri + Tokyo Night workstation, BlackArch tooling, pywal theming](https://github-readme-stats.vercel.app/api/pin/?username=foolish-dev&repo=niri-dotfiles&theme=tokyonight&hide_border=true&bg_color=00000000&icon_color=7aa2f7&title_color=bb9af7)](https://github.com/foolish-dev/niri-dotfiles)
-[![FoolDev/FoolDev on Hugging Face — interactive profile Space mirroring this README](https://img.shields.io/badge/%F0%9F%A4%97%20FoolDev%2FFoolDev-Hugging%20Face%20Space-7aa2f7?style=for-the-badge&logo=huggingface&logoColor=1a1b26&labelColor=24283b)](https://huggingface.co/spaces/FoolDev/FoolDev)
+[![FoolDev/Thanatos-27B on Hugging Face — Qwen3.6 27B dense, Q4_K_M and Q3_K_S, with examples/ + scripts/ tooling layer](https://img.shields.io/badge/%F0%9F%A4%97%20FoolDev%2FThanatos--27B-Hugging%20Face%20Model-bb9af7?style=for-the-badge&logo=huggingface&logoColor=1a1b26&labelColor=24283b)](https://huggingface.co/FoolDev/Thanatos-27B)
 
 ---
 
