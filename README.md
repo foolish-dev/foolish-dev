@@ -34,7 +34,7 @@ ethos         terminal-first, keyboard-driven, fully reproducible
 - Driving [opencode](https://opencode.ai) + Claude Code side-by-side as daily coding agents.
 - Hardening a [scrollable-tiling Wayland workstation](https://github.com/foolish-dev/niri-dotfiles) — Niri, Noctalia, pywal.
 - Agentic offensive security — local LLMs into MCP-backed recon via [HexStrike AI](https://github.com/0x4m4/hexstrike-ai).
-- Shipping [heretic](https://github.com/p-e-w/heretic) abliteration runs to Hugging Face — see below.
+- Shipping [heretic (p-e-w/heretic)](https://github.com/p-e-w/heretic) abliteration runs to Hugging Face — see below.
 - Curating a [Tokyo Night wallpaper collection](https://github.com/foolish-dev/niri-dotfiles/tree/main/wallpapers) for pywal-driven theming.
 
 ---
@@ -43,8 +43,8 @@ ethos         terminal-first, keyboard-driven, fully reproducible
 
 <sub>// models published here, kept in sync with the Modelfile / bridge-files dual setup</sub>
 
-- **[FoolDev/Janus-35B](https://huggingface.co/FoolDev/janus)** — Janus-35B (Qwen 3.6 35B-A3B MoE, 3B active), Q4_K_M ~19 GB. Tools / thinking capabilities wired via root-level `template` / `system` / `params` files.
-- **[FoolDev/Thanatos-27B](https://huggingface.co/FoolDev/Thanatos-27B)** — Thanatos-27B (Qwen 3.6 27B dense), Q4_K_M ~17 GB and Q3_K_S ~12 GB. Same bridge-file setup, plus an `examples/` + `scripts/` tooling layer (smoke + bench + bridge-sync regression guards).
+- **[FoolDev/Janus-35B](https://huggingface.co/FoolDev/janus)** — Janus-35B (Qwen3.6 35B/3B MoE), Q4_K_M ~19 GB. Tools / thinking capabilities wired via root-level `template` / `system` / `params` files.
+- **[FoolDev/Thanatos-27B](https://huggingface.co/FoolDev/Thanatos-27B)** — Thanatos-27B (Qwen3.6 27B dense), Q4_K_M ~17 GB and Q3_K_S ~12 GB. Same bridge-file setup, plus an `examples/` + `scripts/` tooling layer (smoke + bench + bridge-sync regression guards).
 
 Run with `ollama run hf.co/FoolDev/janus:Q4_K_M` or `ollama run hf.co/FoolDev/Thanatos-27B:Q4_K_M`. Tool calls round-trip end-to-end through `/api/chat` and `/v1/chat/completions`.
 
