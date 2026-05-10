@@ -30,7 +30,7 @@ jobs:
       # so the deprecation warning is surfaced as a real failure here first.
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - name: Cache pip
         uses: actions/cache@v4
