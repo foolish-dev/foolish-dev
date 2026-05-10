@@ -115,7 +115,7 @@ jobs:
 
       - name: Upload staged README artifact (dry-run)
         if: env.DRY_RUN == 'true'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: hf-staged-readme
           path: .hf-out/README.md
