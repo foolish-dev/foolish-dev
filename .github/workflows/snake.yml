@@ -33,7 +33,9 @@ jobs:
             dist/snake-light.svg?color_snake=%232e7de9&color_dots=%23f5f5f7,%23c4c8da,%237aa2f7,%232e7de9,%239854f1
 
       # Push generated assets to the `output` branch consumed by the README.
-      - uses: crazy-max/ghaction-github-pages@v5
+      # SHA-pinned (third-party) to match the Platane/snk pin above; Dependabot
+      # still tracks newer versions via the grouped github-actions rule.
+      - uses: crazy-max/ghaction-github-pages@1d6ee9b181a81033a16bd707a1401afa978daab4 # v5.0.0
         with:
           target_branch: output
           build_dir: dist
