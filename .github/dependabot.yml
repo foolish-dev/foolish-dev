@@ -6,3 +6,9 @@ updates:
       interval: weekly
     commit-message:
       prefix: ci
+    # Roll all github-actions bumps into a single weekly PR instead of one
+    # PR per action; keeps the queue tidy on a low-traffic profile repo.
+    groups:
+      actions:
+        patterns:
+          - "*"
