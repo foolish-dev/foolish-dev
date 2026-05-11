@@ -1,4 +1,5 @@
-![foolish-dev — terminal-themed banner with a mock zsh prompt running whoami](assets/banner.svg)
+![foolish-dev — terminal-themed banner with a mock zsh prompt running whoami](assets/banner.svg#gh-dark-mode-only)
+![foolish-dev — terminal-themed banner with a mock zsh prompt running whoami](assets/banner-light.svg#gh-light-mode-only)
 
 [![scrollable-tiling wayland · offensive security operator · AI-augmented developer · terminal-first, keyboard-driven](https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=20&duration=2800&pause=600&color=7AA2F7&center=true&vCenter=true&width=720&lines=%2F%2F+scrollable-tiling+wayland;%2F%2F+offensive+security+operator;%2F%2F+AI-augmented+developer;%2F%2F+terminal-first%2C+keyboard-driven)](https://github.com/foolish-dev)
 
@@ -70,7 +71,8 @@ Run with `ollama run hf.co/FoolDev/Janus-35B:Q4_K_M` or `ollama run hf.co/FoolDe
 
 ![foolish-dev commit activity graph over time](https://github-readme-activity-graph.vercel.app/graph?username=foolish-dev&theme=tokyo-night&bg_color=00000000&color=bb9af7&line=7aa2f7&point=7dcfff&area=true&area_color=7aa2f7&hide_border=true&custom_title=Commit%20activity)
 
-![foolish-dev contribution graph animated as a snake eating the contribution dots](https://raw.githubusercontent.com/foolish-dev/foolish-dev/output/snake.svg)
+![foolish-dev contribution graph animated as a snake eating the contribution dots](https://raw.githubusercontent.com/foolish-dev/foolish-dev/output/snake.svg#gh-dark-mode-only)
+![foolish-dev contribution graph animated as a snake eating the contribution dots](https://raw.githubusercontent.com/foolish-dev/foolish-dev/output/snake-light.svg#gh-light-mode-only)
 
 ---
 

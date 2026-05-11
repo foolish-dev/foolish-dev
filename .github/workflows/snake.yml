@@ -18,6 +18,9 @@ concurrency:
 jobs:
   generate:
     runs-on: ubuntu-latest
+    # Snake gen + push to `output` branch is a sub-minute job; cap well below
+    # the 6h default so a stuck run fails fast instead of burning the budget.
+    timeout-minutes: 5
     steps:
       # Generate the contribution-graph snake animation in Tokyo Night palette,
       # in both dark and light variants. README references both at the `output`

@@ -24,6 +24,9 @@ concurrency:
 jobs:
   sync:
     runs-on: ubuntu-latest
+    # Sync is a sub-minute job; cap well below the 6h default to bound CI
+    # cost and surface stuck runs quickly.
+    timeout-minutes: 5
     env:
       DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run == true }}
     steps:
@@ -53,9 +56,17 @@ jobs:
           repo = os.environ["GITHUB_REPOSITORY"]  # foolish-dev/foolish-dev
           base = f"https://raw.githubusercontent.com/{repo}/main/"
 
+          body = pathlib.Path("README.md").read_text(encoding="utf-8")
+
+          # GitHub renders #gh-{dark,light}-mode-only image variants based on
+          # the viewer's theme; HF has no equivalent and would stack both
+          # variants. Keep the dark variant (canonical), drop the light line,
+          # and strip the dark fragment so the URL stays clean.
+          body = re.sub(r"^.*#gh-light-mode-only.*\n?", "", body, flags=re.MULTILINE)
+          body = body.replace("#gh-dark-mode-only", "")
+
           # Rewrite relative asset references (src=, srcset=, and ![](assets/...))
           # so HF can resolve images that live only in the GitHub repo.
-          body = pathlib.Path("README.md").read_text(encoding="utf-8")
           body = re.sub(
               r'((?:src|srcset)=")(?!https?://|/|#)(assets/[^"]+)(")',
               lambda m: m.group(1) + base + m.group(2) + m.group(3),
