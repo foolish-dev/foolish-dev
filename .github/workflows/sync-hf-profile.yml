@@ -112,7 +112,7 @@ jobs:
                   "colorTo: purple\n"
                   "sdk: static\n"
                   "pinned: true\n"
-                  "short_description: agentic offsec · Janus 35B/27B abliteration · arch+niri\n"
+                  "short_description: agentic offsec · Janus 35B + Thanatos 27B · arch+niri\n"
                   "---\n"
               )
 
