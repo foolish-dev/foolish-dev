@@ -3,6 +3,10 @@
 
 [![scrollable-tiling wayland · offensive security operator · AI-augmented developer · terminal-first, keyboard-driven](https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=20&duration=2800&pause=600&color=7AA2F7&center=true&vCenter=true&width=720&lines=%2F%2F+scrollable-tiling+wayland;%2F%2F+offensive+security+operator;%2F%2F+AI-augmented+developer;%2F%2F+terminal-first%2C+keyboard-driven)](https://github.com/foolish-dev)
 
+<p align="center">
+  <a href="https://buymeacoffee.com/cardoffools"><img alt="Buy me a coffee — support foolish-dev's work on agents, models, and dotfiles" src="https://img.shields.io/badge/%E2%98%95%20Buy%20me%20a%20coffee-e0af68?style=for-the-badge&logo=buymeacoffee&logoColor=1a1b26&labelColor=24283b"></a>
+</p>
+
 > *agentic offsec · Janus 35B + Thanatos 27B · arch+niri*  ·  [🤗 live on Hugging Face](https://huggingface.co/spaces/FoolDev/FoolDev)
 
 ![Arch Linux](https://img.shields.io/badge/Arch_Linux-7aa2f7?style=flat-square&logo=archlinux&logoColor=1a1b26)
