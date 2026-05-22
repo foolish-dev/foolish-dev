@@ -80,14 +80,14 @@
       <tspan dx="6" fill="#3760bf">opencode</tspan>
       <tspan dx="8" fill="#848cb5">·</tspan>
       <tspan dx="6" fill="#3760bf">lm-studio</tspan>
+      <tspan dx="8" fill="#848cb5">·</tspan>
+      <tspan dx="6" fill="#3760bf">hexstrike-ai</tspan>
     </text>
     <text y="210">
-      <tspan x="280" fill="#9854f1" font-weight="600">domain</tspan>
-      <tspan x="380" fill="#3760bf">offsec</tspan>
+      <tspan x="280" fill="#9854f1" font-weight="600">models</tspan>
+      <tspan x="380" fill="#3760bf">Janus-35B</tspan>
       <tspan dx="8" fill="#848cb5">·</tspan>
-      <tspan dx="6" fill="#3760bf">automation</tspan>
-      <tspan dx="8" fill="#848cb5">·</tspan>
-      <tspan dx="6" fill="#3760bf">llm tooling</tspan>
+      <tspan dx="6" fill="#3760bf">Thanatos-27B</tspan>
     </text>
   </g>
 

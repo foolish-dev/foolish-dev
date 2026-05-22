@@ -1,5 +1,5 @@
-![foolish-dev — terminal-themed banner with a mock zsh prompt running whoami](assets/banner.svg#gh-dark-mode-only)
-![foolish-dev — terminal-themed banner with a mock zsh prompt running whoami](assets/banner-light.svg#gh-light-mode-only)
+![foolish-dev — neofetch-style banner card on Tokyo Night, listing os, wm, shell, theme, agents, models](assets/banner.svg#gh-dark-mode-only)
+![foolish-dev — neofetch-style banner card on Tokyo Night Day, listing os, wm, shell, theme, agents, models](assets/banner-light.svg#gh-light-mode-only)
 
 [![scrollable-tiling wayland · offensive security operator · AI-augmented developer · terminal-first, keyboard-driven](https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=20&duration=2800&pause=600&color=7AA2F7&center=true&vCenter=true&width=720&lines=%2F%2F+scrollable-tiling+wayland;%2F%2F+offensive+security+operator;%2F%2F+AI-augmented+developer;%2F%2F+terminal-first%2C+keyboard-driven)](https://github.com/foolish-dev)
 
@@ -24,6 +24,7 @@
 
 stack         arch · niri · zsh · tmux · neovim
 agents        opencode · claude-code · lm-studio · hexstrike-ai mcp
+models        Janus-35B (Qwen3.6 MoE) · Thanatos-27B (Qwen3.6 dense)
 discipline    offensive security · automation · LLM tooling
 theme         tokyo night + pywal (wallpaper-driven)
 mirror        github → huggingface.co/FoolDev (auto-synced)
@@ -39,7 +40,7 @@ ethos         terminal-first, keyboard-driven, fully reproducible
 - Driving [opencode](https://opencode.ai) + Claude Code side-by-side as daily coding agents.
 - Hardening a [scrollable-tiling Wayland workstation](https://github.com/foolish-dev/niri-dotfiles) — Niri, Noctalia, pywal.
 - Agentic offensive security — local LLMs into MCP-backed recon via [HexStrike AI](https://github.com/0x4m4/hexstrike-ai).
-- Shipping [heretic (p-e-w/heretic)](https://github.com/p-e-w/heretic) abliteration runs to Hugging Face — see below.
+- Shipping [heretic](https://github.com/p-e-w/heretic) abliteration runs as **Janus-35B** (Qwen3.6 MoE) and **Thanatos-27B** (Qwen3.6 dense) on Hugging Face — details below.
 - Curating a [Tokyo Night wallpaper collection](https://github.com/foolish-dev/niri-dotfiles/tree/main/wallpapers) for pywal-driven theming.
 
 ---
