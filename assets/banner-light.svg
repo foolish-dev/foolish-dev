@@ -93,7 +93,7 @@
 
   <!-- TN-day palette dots -->
   <g transform="translate(778,218)">
-    <circle cx="0"  cy="0" r="4" fill="#f52a65"/>
+    <circle cx="0" cy="0" r="4" fill="#f52a65"/>
     <circle cx="13" cy="0" r="4" fill="#b15c00"/>
     <circle cx="26" cy="0" r="4" fill="#587539"/>
     <circle cx="39" cy="0" r="4" fill="#007197"/>
