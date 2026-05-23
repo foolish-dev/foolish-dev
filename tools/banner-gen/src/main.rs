@@ -26,7 +26,10 @@ const ROWS: &[Row] = &[
     Row {
         label: "wm",
         sep: "·",
-        items: &[Item::Primary("niri"), Item::Dim("scrollable-tiling wayland")],
+        items: &[
+            Item::Primary("niri"),
+            Item::Dim("scrollable-tiling wayland"),
+        ],
     },
     Row {
         label: "shell",
@@ -101,7 +104,9 @@ const DARK: Theme = Theme {
     primary: "#c0caf5",
     dim: "#9aa5ce",
     sep_fill: "#565f89",
-    palette: ["#f7768e", "#e0af68", "#9ece6a", "#7dcfff", "#7aa2f7", "#bb9af7"],
+    palette: [
+        "#f7768e", "#e0af68", "#9ece6a", "#7dcfff", "#7aa2f7", "#bb9af7",
+    ],
     palette_note: "TN palette dots",
 };
 
@@ -124,7 +129,9 @@ const LIGHT: Theme = Theme {
     primary: "#3760bf",
     dim: "#6172b0",
     sep_fill: "#848cb5",
-    palette: ["#f52a65", "#b15c00", "#587539", "#007197", "#2e7de9", "#9854f1"],
+    palette: [
+        "#f52a65", "#b15c00", "#587539", "#007197", "#2e7de9", "#9854f1",
+    ],
     palette_note: "TN-day palette dots",
 };
 
@@ -170,19 +177,66 @@ fn render(t: &Theme) -> String {
     )
     .unwrap();
     writeln!(w, "  <defs>").unwrap();
-    writeln!(w, r#"    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">"#).unwrap();
-    writeln!(w, r#"      <stop offset="0%" stop-color="{}"/>"#, t.bg_start).unwrap();
-    writeln!(w, r#"      <stop offset="100%" stop-color="{}"/>"#, t.bg_end).unwrap();
+    writeln!(
+        w,
+        r#"    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">"#
+    )
+    .unwrap();
+    writeln!(
+        w,
+        r#"      <stop offset="0%" stop-color="{}"/>"#,
+        t.bg_start
+    )
+    .unwrap();
+    writeln!(
+        w,
+        r#"      <stop offset="100%" stop-color="{}"/>"#,
+        t.bg_end
+    )
+    .unwrap();
     writeln!(w, "    </linearGradient>").unwrap();
-    writeln!(w, r#"    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">"#).unwrap();
-    writeln!(w, r#"      <stop offset="0%" stop-color="{}"/>"#, t.accent[0]).unwrap();
-    writeln!(w, r#"      <stop offset="50%" stop-color="{}"/>"#, t.accent[1]).unwrap();
-    writeln!(w, r#"      <stop offset="100%" stop-color="{}"/>"#, t.accent[2]).unwrap();
+    writeln!(
+        w,
+        r#"    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">"#
+    )
+    .unwrap();
+    writeln!(
+        w,
+        r#"      <stop offset="0%" stop-color="{}"/>"#,
+        t.accent[0]
+    )
+    .unwrap();
+    writeln!(
+        w,
+        r#"      <stop offset="50%" stop-color="{}"/>"#,
+        t.accent[1]
+    )
+    .unwrap();
+    writeln!(
+        w,
+        r#"      <stop offset="100%" stop-color="{}"/>"#,
+        t.accent[2]
+    )
+    .unwrap();
     writeln!(w, "    </linearGradient>").unwrap();
-    writeln!(w, r#"    <linearGradient id="mark" x1="0" y1="0" x2="0" y2="1">"#).unwrap();
+    writeln!(
+        w,
+        r#"    <linearGradient id="mark" x1="0" y1="0" x2="0" y2="1">"#
+    )
+    .unwrap();
     writeln!(w, r#"      <stop offset="0%" stop-color="{}"/>"#, t.mark[0]).unwrap();
-    writeln!(w, r#"      <stop offset="50%" stop-color="{}"/>"#, t.mark[1]).unwrap();
-    writeln!(w, r#"      <stop offset="100%" stop-color="{}"/>"#, t.mark[2]).unwrap();
+    writeln!(
+        w,
+        r#"      <stop offset="50%" stop-color="{}"/>"#,
+        t.mark[1]
+    )
+    .unwrap();
+    writeln!(
+        w,
+        r#"      <stop offset="100%" stop-color="{}"/>"#,
+        t.mark[2]
+    )
+    .unwrap();
     writeln!(w, "    </linearGradient>").unwrap();
     writeln!(
         w,
@@ -235,7 +289,11 @@ fn render(t: &Theme) -> String {
     writeln!(w).unwrap();
 
     writeln!(w, "  <!-- arch-mountain mark -->").unwrap();
-    writeln!(w, r#"  <g transform="translate(130,118)" filter="url(#glow)">"#).unwrap();
+    writeln!(
+        w,
+        r#"  <g transform="translate(130,118)" filter="url(#glow)">"#
+    )
+    .unwrap();
     writeln!(
         w,
         r#"    <polygon points="0,-70 70,70 -70,70" fill="none" stroke="url(#mark)" stroke-width="2.5" stroke-linejoin="round"/>"#
