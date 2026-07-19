@@ -6,6 +6,9 @@ const ROW_VALUE_X: u32 = 380;
 const ROW_Y_FIRST: u32 = 100;
 const ROW_Y_STEP: u32 = 22;
 
+// Data below is emitted into the SVG verbatim (no XML escaping). Keep all ROWS
+// and Theme text values free of XML metacharacters (& < > ") and of `--` (which
+// would break the palette-note comment). Static data only.
 enum Item {
     Primary(&'static str),
     Dim(&'static str),
@@ -385,4 +388,25 @@ fn main() -> std::io::Result<()> {
         println!("wrote {}", path.display());
     }
     Ok(())
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    // The committed SVGs are generated artifacts; guard against them drifting
+    // from the generator. If this fails, run `cargo run` to regenerate.
+    #[test]
+    fn committed_assets_match_render() {
+        assert_eq!(
+            render(&DARK),
+            include_str!("../../../assets/banner.svg"),
+            "assets/banner.svg is stale — run `cargo run` in tools/banner-gen"
+        );
+        assert_eq!(
+            render(&LIGHT),
+            include_str!("../../../assets/banner-light.svg"),
+            "assets/banner-light.svg is stale — run `cargo run` in tools/banner-gen"
+        );
+    }
 }
