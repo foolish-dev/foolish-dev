@@ -52,8 +52,8 @@ const ROWS: &[Row] = &[
         label: "agents",
         sep: "·",
         items: &[
-            Item::Primary("claude-code"),
             Item::Primary("opencode"),
+            Item::Primary("claude-code"),
             Item::Primary("lm-studio"),
             Item::Primary("hexstrike-ai"),
         ],
