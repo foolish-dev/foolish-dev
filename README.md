@@ -40,7 +40,7 @@ ethos         terminal-first, keyboard-driven, fully reproducible
 - Driving [opencode](https://opencode.ai) + Claude Code side-by-side as daily coding agents.
 - Hardening a [scrollable-tiling Wayland workstation](https://github.com/foolish-dev/niri-dotfiles) — Niri, Noctalia, pywal.
 - Agentic offensive security — local LLMs into MCP-backed recon via [HexStrike AI](https://github.com/0x4m4/hexstrike-ai).
-- Shipping [heretic](https://github.com/p-e-w/heretic) abliteration runs as **Janus-35B** (Qwen3.6 MoE) and **Thanatos-27B** (Qwen3.6 dense) on Hugging Face — details below.
+- Shipping distilled **Janus-35B** (Qwen3.6 MoE) and **Thanatos-27B** (Qwen3.6 dense) on Hugging Face — details below.
 - Curating a [Tokyo Night wallpaper collection](https://github.com/foolish-dev/niri-dotfiles/tree/main/wallpapers) for pywal-driven theming.
 
 ---
