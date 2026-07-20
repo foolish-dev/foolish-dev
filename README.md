@@ -49,12 +49,7 @@ theme         tokyo night + pywal (wallpaper-driven)
 ethos         terminal-first, keyboard-driven, reproducible
 ```
 
-[rustlang-badge]: https://img.shields.io/badge/🦀%20Rust-ff9e64?style=for-the-badge&logo=rust&logoColor=c0caf5&label=Rust&labelColor=24283b
-[python-badge]: https://img.shields.io/badge/%F0%9F%90%94%20Python-7dcfff?style=for-the-badge&logo=python&logoColor=1a1b26&label=Python&labelColor=24283b
-[go-badge]: https://img.shields.io/badge/⚙️%20Go-bb9af7?style=for-the-badge&logo=go&logoColor=1a1b26&label=Go&labelColor=24283b
-[lua-badge]: https://img.shields.io/badge/🌊%20Lua-f7768e?style=for-the-badge&display-name=lua&logo=lua&logoColor=1a1b26&label=Lua&labelColor=24283b
-[neovim-badge]: https://img.shields.io/badge/VIM-9ece6a?style=for-the-badge&logo=vim&logoColor=c0caf5&label=Neovim&labelColor=24283b
-[wayland-badge]: https://img.shields.io/badge/Wayland-bb9af7?style=for-the-badge&logo=gnu%20bash&logoColor=1a1b26&label=Niri&labelColor=24283b
+
 
 ---
 
