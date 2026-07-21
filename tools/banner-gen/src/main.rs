@@ -46,7 +46,11 @@ const ROWS: &[Row] = &[
     Row {
         label: "theme",
         sep: "+",
-        items: &[Item::Primary("tokyo night"), Item::Dim("pywal")],
+        items: &[
+            Item::Primary("tokyo night"),
+            Item::Dim("pywal"),
+            Item::Dim("noctalia"),
+        ],
     },
     Row {
         label: "agents",
