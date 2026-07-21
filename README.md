@@ -1,6 +1,7 @@
 # foolish-dev
 
 ![foolish-dev — neofetch-style banner card on Tokyo Night, listing os, wm, shell, theme, agents, models](assets/banner.svg#gh-dark-mode-only)
+![foolish-dev — neofetch-style banner card on Tokyo Night, listing os, wm, shell, theme, agents, models](assets/banner-light.svg#gh-light-mode-only)
 
 [![scrollable-tiling wayland · offensive security operator · AI-augmented developer](https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=30&duration=3755&pause=1468&color=%237AA2F7&center=true&fill=true&vCenter=true&width=720&lines=scrollable-tiling%20wayland;offensive%20security%20operator;AI-augmented%20developer)](https://github.com/foolish-dev)
 
@@ -25,7 +26,7 @@
 |---|---|
 | [niri-dotfiles](https://github.com/foolish-dev/niri-dotfiles) | Arch · Niri · Tokyo Night · pywal · Noctalia |
 | [grogu](https://github.com/foolish-dev/grogu) | Rust · tooling & CLI |
-| [foolish-tools](https://github.com/foolish-dev/foolish-tools) | Rust · local LLM helpers |
+| [teleia](https://github.com/foolish-dev/teleia) | Rust · TUI coding agent · Ollama/Anthropic/OpenAI |
 
 ### ❯ Stack // languages in daily use
 
