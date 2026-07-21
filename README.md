@@ -42,6 +42,11 @@ ethos         terminal-first, keyboard-driven, reproducible
 - [Hugging Face](https://huggingface.co/FoolDev)
 - [GitHub](https://github.com/foolish-dev)
 
+### ❯ Contributions // contribution graph, animated as a snake
+
+![foolish-dev contribution graph animated as a snake eating the contribution dots](https://raw.githubusercontent.com/foolish-dev/foolish-dev/output/snake.svg#gh-dark-mode-only)
+![foolish-dev contribution graph animated as a snake eating the contribution dots](https://raw.githubusercontent.com/foolish-dev/foolish-dev/output/snake-light.svg#gh-light-mode-only)
+
 ---
 
 <small>keep building • keep breaking</small>
