@@ -5,6 +5,8 @@
 
 [![foolish-dev taglines — scrollable-tiling wayland, agentic offensive-security, terminal-first dev](https://readme-typing-svg.demolab.com?font=JetBrains+Mono&size=20&pause=1000&color=%237AA2F7&center=true&vCenter=true&width=560&lines=scrollable-tiling+wayland+%2F%2F+niri;agentic+offensive-security;AI-augmented%2C+terminal-first+dev)](https://github.com/foolish-dev)
 
+[![Buy me a coffee — support foolish-dev's work on agents, models, and dotfiles](https://img.shields.io/badge/%E2%98%95%20Buy%20me%20a%20coffee-e0af68?style=for-the-badge&logo=buymeacoffee&logoColor=1a1b26&labelColor=24283b)](https://buymeacoffee.com/cardoffoolm)
+
 > `// build small models, sharp tools, and a desktop i can rebuild from scratch.`
 
 ### ❯ Models // qwen3.6, distilled + quantized, live on hugging face
