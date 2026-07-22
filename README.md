@@ -38,7 +38,7 @@ wm        niri            // scrollable-tiling wayland
 shell     zsh · tmux
 editor    nvim
 theme     tokyo night     // pywal · noctalia
-agents     teleia · claude-code
+agents    teleia · claude-code
 security  hexstrike-ai    // agentic offensive-security
 ethos     terminal-first · keyboard-driven · reproducible
 ```
@@ -51,7 +51,7 @@ ethos     terminal-first · keyboard-driven · reproducible
 ![rust](https://img.shields.io/badge/rust-1a1b26?style=flat-square&logo=rust&logoColor=e0af68)
 ![hexstrike-ai](https://img.shields.io/badge/hexstrike--ai-1a1b26?style=flat-square&logo=hackthebox&logoColor=f7768e)
 
-`// agents:` [opencode](https://opencode.ai) `·` claude-code `·` lm-studio `·` [hexstrike-ai](https://github.com/0x4m4/hexstrike-ai)
+`// agents:` [teleia](https://github.com/foolish-dev/teleia) `·` claude-code `·` [hexstrike-ai](https://github.com/0x4m4/hexstrike-ai)
 
 ### ❯ Contact // find me in the terminal
 

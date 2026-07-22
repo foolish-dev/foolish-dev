@@ -77,11 +77,9 @@
     </text>
     <text y="188">
       <tspan x="280" fill="#bb9af7" font-weight="600">agents</tspan>
-      <tspan x="380" fill="#c0caf5">opencode</tspan>
+      <tspan x="380" fill="#c0caf5">teleia</tspan>
       <tspan dx="8" fill="#565f89">·</tspan>
       <tspan dx="6" fill="#c0caf5">claude-code</tspan>
-      <tspan dx="8" fill="#565f89">·</tspan>
-      <tspan dx="6" fill="#c0caf5">lm-studio</tspan>
       <tspan dx="8" fill="#565f89">·</tspan>
       <tspan dx="6" fill="#c0caf5">hexstrike-ai</tspan>
     </text>
