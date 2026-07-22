@@ -35,7 +35,7 @@ const ROWS: &[Row] = &[
         ],
     },
     Row {
-        label: "shell",
+        label: "editor",
         sep: "·",
         items: &[
             Item::Primary("zsh"),
