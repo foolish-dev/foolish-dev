@@ -33,4 +33,7 @@ ollama run hf.co/FoolDev/Janus-35B:Q4_K_M
 
 [github.com/foolish-dev](https://github.com/foolish-dev) · [huggingface.co/FoolDev](https://huggingface.co/FoolDev)
 
+![foolish-dev contribution graph animated as a snake eating the contribution dots](https://raw.githubusercontent.com/foolish-dev/foolish-dev/output/snake.svg#gh-dark-mode-only)
+![foolish-dev contribution graph animated as a snake eating the contribution dots](https://raw.githubusercontent.com/foolish-dev/foolish-dev/output/snake-light.svg#gh-light-mode-only)
+
 _`// keep building, keep breaking.`_
