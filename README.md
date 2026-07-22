@@ -38,7 +38,7 @@ wm        niri            // scrollable-tiling wayland
 shell     zsh · tmux
 editor    nvim
 theme     tokyo night     // pywal · noctalia
-agents    opencode · claude-code · lm-studio
+agents     teleia · claude-code
 security  hexstrike-ai    // agentic offensive-security
 ethos     terminal-first · keyboard-driven · reproducible
 ```
