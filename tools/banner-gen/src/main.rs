@@ -37,11 +37,7 @@ const ROWS: &[Row] = &[
     Row {
         label: "editor",
         sep: "·",
-        items: &[
-            Item::Primary("zsh"),
-            Item::Primary("tmux"),
-            Item::Primary("neovim"),
-        ],
+        items: &[Item::Primary("neovim")],
     },
     Row {
         label: "theme",

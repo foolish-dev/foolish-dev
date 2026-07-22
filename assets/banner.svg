@@ -61,11 +61,7 @@
     </text>
     <text y="144">
       <tspan x="280" fill="#bb9af7" font-weight="600">editor</tspan>
-      <tspan x="380" fill="#c0caf5">zsh</tspan>
-      <tspan dx="8" fill="#565f89">·</tspan>
-      <tspan dx="6" fill="#c0caf5">tmux</tspan>
-      <tspan dx="8" fill="#565f89">·</tspan>
-      <tspan dx="6" fill="#c0caf5">neovim</tspan>
+      <tspan x="380" fill="#c0caf5">neovim</tspan>
     </text>
     <text y="166">
       <tspan x="280" fill="#bb9af7" font-weight="600">theme</tspan>
