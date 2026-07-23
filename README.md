@@ -71,7 +71,3 @@ foolish@arch ~ $ coffee
 ```
 
 [![Buy me a coffee — support foolish-dev's work on agents, models, and dotfiles](https://img.buymeacoffee.com/button-api/?text=Buy%20me%20a%20coffee&emoji=%E2%98%95&slug=cardoffoolm&button_colour=e0af68&font_colour=1a1b26&font_family=Poppins&outline_colour=1a1b26&coffee_colour=1a1b26)](https://buymeacoffee.com/cardoffoolm)
-
-```console
-foolish@arch ~ $ █  // keep building, keep breaking.
-```
