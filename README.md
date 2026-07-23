@@ -7,7 +7,7 @@
 
 > `// build small models, sharp tools, and a desktop i can rebuild from scratch.`
 
-Dev in the Arch + Niri + Tokyo Night stack — fine-tuned LLMs, Rust coding agents, and a dotfile setup I can bring up from bare metal.
+fine-tuned llms, rust coding agents, and dotfiles that come up from bare metal — all on arch + niri + tokyo night.
 
 ### ❯ Models // Qwen 3.6 on Hugging Face
 
@@ -22,7 +22,7 @@ ollama run hf.co/FoolDev/Janus-35B:Q4_K_M
 
 ### ❯ Projects
 
-[**teleia**](https://github.com/foolish-dev/teleia) — Rust TUI coding agent
+[**teleia**](https://github.com/foolish-dev/teleia) — rust tui coding agent
 [**grogu**](https://github.com/foolish-dev/grogu) — one palette synced across niri · kitty · vim · tmux
 
 ### ❯ Stack
