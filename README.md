@@ -1,6 +1,6 @@
 [![foolish-dev — a themed terminal session on arch + niri + tokyo night](assets/banner-light.svg)](https://github.com/foolish-dev)
 
-[![buy me a coffee — support foolish-dev's work on agents, models, and dotfiles](assets/coffee.svg)](https://buymeacoffee.com/cardoffoolm)
+<a href="https://buymeacoffee.com/cardoffoolm"><img src="assets/coffee.svg" width="140" alt="buy me a coffee — support foolish-dev's work on agents, models, and dotfiles"></a>
 
 ![arch](https://img.shields.io/badge/arch-1a1b26?style=flat-square&logo=archlinux&logoColor=7dcfff)
 ![niri](https://img.shields.io/badge/niri-1a1b26?style=flat-square&logo=wayland&logoColor=7aa2f7)
