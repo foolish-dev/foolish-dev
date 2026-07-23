@@ -55,7 +55,7 @@ agents    teleia · claude-code · hexstrike-ai
 foolish@arch ~ $ links
 ```
 
-[github.com/foolish-dev](https://github.com/foolish-dev) · [huggingface.co/FoolDev](https://huggingface.co/FoolDev)
+[github.com/foolish-dev](https://github.com/foolish-dev) · [huggingface.co/FoolDev](https://huggingface.co/FoolDev) · [cardoffools@gmail.com](mailto:cardoffools@gmail.com)
 
 ```console
 foolish@arch ~ $ coffee
