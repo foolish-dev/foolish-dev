@@ -213,9 +213,9 @@ mod tests {
     #[test]
     fn preserves_anchors_verbatim() {
         let out = staged();
-        // BMC slug must keep its trailing 'm'; button-api query '&' stays literal.
+        // BMC slug must keep its trailing 'm'; the coffee asset is absolutised.
         assert!(out.contains("buymeacoffee.com/cardoffoolm"));
-        assert!(out.contains("button_colour=1a1b26&font_colour=c0caf5"));
+        assert!(out.contains(&format!("{BASE}assets/coffee.svg")));
         assert!(out.contains("ollama run hf.co/FoolDev/Janus-35B:Q4_K_M"));
     }
 

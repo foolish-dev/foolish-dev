@@ -66,4 +66,4 @@ foolish@arch ~ $ links
 
 [github.com/foolish-dev](https://github.com/foolish-dev) · [huggingface.co/FoolDev](https://huggingface.co/FoolDev) · [cardoffools@gmail.com](mailto:cardoffools@gmail.com)
 
-[![Buy me a coffee — support foolish-dev's work on agents, models, and dotfiles](https://img.buymeacoffee.com/button-api/?text=Buy%20me%20a%20coffee&emoji=%E2%98%95&slug=cardoffoolm&button_colour=1a1b26&font_colour=c0caf5&font_family=Poppins&outline_colour=414868&coffee_colour=e0af68)](https://buymeacoffee.com/cardoffoolm)
+[![buy me a coffee — support foolish-dev's work on agents, models, and dotfiles](assets/coffee.svg)](https://buymeacoffee.com/cardoffoolm)
