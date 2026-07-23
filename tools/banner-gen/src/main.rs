@@ -1,363 +1,216 @@
 use std::fmt::Write as _;
 use std::path::PathBuf;
 
-const ROW_LABEL_X: u32 = 280;
-const ROW_VALUE_X: u32 = 380;
-const ROW_Y_FIRST: u32 = 100;
-const ROW_Y_STEP: u32 = 22;
-
-// Data below is emitted into the SVG verbatim (no XML escaping). Keep all ROWS
-// and Theme text values free of XML metacharacters (& < > ") and of `--` (which
-// would break the palette-note comment). Static data only.
-enum Item {
-    Primary(&'static str),
-    Dim(&'static str),
-}
-
+// A self-contained Tokyo Night terminal window: titlebar + traffic lights, an
+// arch-mountain mark in the left gutter, and a neofetch readout on the right.
+// The card paints its own background so it reads on both light and dark GitHub.
+//
+// Row values are emitted into the SVG verbatim (no XML escaping). Keep every
+// key/value free of XML metacharacters (& < > ") and of `--`. Static data only.
 struct Row {
-    label: &'static str,
-    sep: &'static str,
-    items: &'static [Item],
+    key: &'static str,
+    val: &'static str,
 }
 
 const ROWS: &[Row] = &[
     Row {
-        label: "os",
-        sep: "·",
-        items: &[Item::Primary("Arch Linux"), Item::Dim("x86_64")],
+        key: "os",
+        val: "arch linux · x86_64",
     },
     Row {
-        label: "wm",
-        sep: "·",
-        items: &[
-            Item::Primary("niri"),
-            Item::Dim("scrollable-tiling wayland"),
-        ],
+        key: "wm",
+        val: "niri · scrollable-tiling wayland",
     },
     Row {
-        label: "editor",
-        sep: "·",
-        items: &[Item::Primary("neovim")],
+        key: "shell",
+        val: "zsh",
     },
     Row {
-        label: "theme",
-        sep: "+",
-        items: &[
-            Item::Primary("tokyo night"),
-            Item::Dim("pywal"),
-            Item::Dim("noctalia"),
-        ],
+        key: "editor",
+        val: "neovim",
     },
     Row {
-        label: "agents",
-        sep: "·",
-        items: &[
-            Item::Primary("teleia"),
-            Item::Primary("claude-code"),
-            Item::Primary("hexstrike-ai"),
-        ],
+        key: "theme",
+        val: "tokyo night + pywal + noctalia",
     },
     Row {
-        label: "models",
-        sep: "·",
-        items: &[Item::Primary("Janus-35B"), Item::Primary("Thanatos-27B")],
+        key: "agents",
+        val: "teleia · claude-code · hexstrike-ai",
+    },
+    Row {
+        key: "models",
+        val: "Janus-35B · Thanatos-27B",
     },
 ];
 
-struct Theme {
-    file: &'static str,
-    bg_start: &'static str,
-    bg_end: &'static str,
-    accent: [&'static str; 3],
-    mark: [&'static str; 3],
-    glow_stddev: &'static str,
-    grid: &'static str,
-    grid_opacity: &'static str,
-    border: &'static str,
-    caption: &'static str,
-    divider: &'static str,
-    at_sign: &'static str,
-    host: &'static str,
-    mark_mid: &'static str,
-    label_fill: &'static str,
-    primary: &'static str,
-    dim: &'static str,
-    sep_fill: &'static str,
-    palette: [&'static str; 6],
-    palette_note: &'static str,
-}
+// Tokyo Night accent dots, bottom-right — the maker's mark.
+const PALETTE: [&str; 6] = [
+    "#f7768e", "#e0af68", "#9ece6a", "#7dcfff", "#7aa2f7", "#bb9af7",
+];
 
-const LIGHT: Theme = Theme {
-    file: "banner-light.svg",
-    bg_start: "#e1e2e7",
-    bg_end: "#d5d6db",
-    accent: ["#2e7de9", "#9854f1", "#007197"],
-    mark: ["#007197", "#2e7de9", "#9854f1"],
-    glow_stddev: "1.6",
-    grid: "#a8aecb",
-    grid_opacity: "0.45",
-    border: "#a8aecb",
-    caption: "#848cb5",
-    divider: "#a8aecb",
-    at_sign: "#848cb5",
-    host: "#007197",
-    mark_mid: "#2e7de9",
-    label_fill: "#9854f1",
-    primary: "#3760bf",
-    dim: "#6172b0",
-    sep_fill: "#848cb5",
-    palette: [
-        "#f52a65", "#b15c00", "#587539", "#007197", "#2e7de9", "#9854f1",
-    ],
-    palette_note: "TN-day palette dots",
-};
+const ROW_KEY_X: u32 = 324;
+const ROW_VAL_X: u32 = 430;
+const ROW_Y0: u32 = 96;
+const ROW_STEP: u32 = 22;
 
-fn write_row(t: &Theme, row: &Row, y: u32, w: &mut String) {
-    writeln!(w, "    <text y=\"{y}\">").unwrap();
-    writeln!(
-        w,
-        "      <tspan x=\"{ROW_LABEL_X}\" fill=\"{}\" font-weight=\"600\">{}</tspan>",
-        t.label_fill, row.label
-    )
-    .unwrap();
-    for (i, item) in row.items.iter().enumerate() {
-        let (text, fill) = match item {
-            Item::Primary(s) => (*s, t.primary),
-            Item::Dim(s) => (*s, t.dim),
-        };
-        if i == 0 {
-            writeln!(
-                w,
-                "      <tspan x=\"{ROW_VALUE_X}\" fill=\"{fill}\">{text}</tspan>"
-            )
-            .unwrap();
-        } else {
-            writeln!(
-                w,
-                "      <tspan dx=\"8\" fill=\"{}\">{}</tspan>",
-                t.sep_fill, row.sep
-            )
-            .unwrap();
-            writeln!(w, "      <tspan dx=\"6\" fill=\"{fill}\">{text}</tspan>").unwrap();
-        }
-    }
-    writeln!(w, "    </text>").unwrap();
-}
-
-fn render(t: &Theme) -> String {
+fn render() -> String {
     let mut s = String::with_capacity(4096);
     let w = &mut s;
 
     writeln!(
         w,
-        r#"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 240" role="img" aria-label="foolish-dev — neofetch banner">"#
+        r##"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 240" role="img" aria-label="foolish-dev — a themed terminal session on arch + niri + tokyo night">"##
     )
     .unwrap();
+
+    // defs: mark gradient, rounded-card clip, and a soft glow.
     writeln!(w, "  <defs>").unwrap();
     writeln!(
         w,
-        r#"    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">"#
+        r##"    <linearGradient id="mark" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#7aa2f7"/><stop offset="100%" stop-color="#bb9af7"/></linearGradient>"##
     )
     .unwrap();
     writeln!(
         w,
-        r#"      <stop offset="0%" stop-color="{}"/>"#,
-        t.bg_start
+        r##"    <clipPath id="card"><rect x="0" y="0" width="900" height="240" rx="12"/></clipPath>"##
     )
     .unwrap();
     writeln!(
         w,
-        r#"      <stop offset="100%" stop-color="{}"/>"#,
-        t.bg_end
+        r##"    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="1.4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>"##
     )
     .unwrap();
-    writeln!(w, "    </linearGradient>").unwrap();
-    writeln!(
-        w,
-        r#"    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">"#
-    )
-    .unwrap();
-    writeln!(
-        w,
-        r#"      <stop offset="0%" stop-color="{}"/>"#,
-        t.accent[0]
-    )
-    .unwrap();
-    writeln!(
-        w,
-        r#"      <stop offset="50%" stop-color="{}"/>"#,
-        t.accent[1]
-    )
-    .unwrap();
-    writeln!(
-        w,
-        r#"      <stop offset="100%" stop-color="{}"/>"#,
-        t.accent[2]
-    )
-    .unwrap();
-    writeln!(w, "    </linearGradient>").unwrap();
-    writeln!(
-        w,
-        r#"    <linearGradient id="mark" x1="0" y1="0" x2="0" y2="1">"#
-    )
-    .unwrap();
-    writeln!(w, r#"      <stop offset="0%" stop-color="{}"/>"#, t.mark[0]).unwrap();
-    writeln!(
-        w,
-        r#"      <stop offset="50%" stop-color="{}"/>"#,
-        t.mark[1]
-    )
-    .unwrap();
-    writeln!(
-        w,
-        r#"      <stop offset="100%" stop-color="{}"/>"#,
-        t.mark[2]
-    )
-    .unwrap();
-    writeln!(w, "    </linearGradient>").unwrap();
-    writeln!(
-        w,
-        r#"    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">"#
-    )
-    .unwrap();
-    writeln!(
-        w,
-        r#"      <feGaussianBlur stdDeviation="{}" result="b"/>"#,
-        t.glow_stddev
-    )
-    .unwrap();
-    writeln!(
-        w,
-        r#"      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>"#
-    )
-    .unwrap();
-    writeln!(w, "    </filter>").unwrap();
-    writeln!(
-        w,
-        r#"    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">"#
-    )
-    .unwrap();
-    writeln!(
-        w,
-        r#"      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="{}" stroke-width="0.4" opacity="{}"/>"#,
-        t.grid, t.grid_opacity
-    )
-    .unwrap();
-    writeln!(w, "    </pattern>").unwrap();
     writeln!(w, "  </defs>").unwrap();
-    writeln!(w).unwrap();
 
+    // window body, titlebar, and terminal canvas — clipped to rounded corners.
     writeln!(
         w,
-        r#"  <rect x="0" y="0" width="900" height="240" rx="14" fill="url(#bg)"/>"#
+        r##"  <rect x="0" y="0" width="900" height="240" rx="12" fill="#24283b"/>"##
+    )
+    .unwrap();
+    writeln!(w, r##"  <g clip-path="url(#card)">"##).unwrap();
+    writeln!(
+        w,
+        r##"    <rect x="0" y="0" width="900" height="30" fill="#2f334d"/>"##
     )
     .unwrap();
     writeln!(
         w,
-        r#"  <rect x="0" y="0" width="900" height="240" rx="14" fill="url(#grid)"/>"#
+        r##"    <rect x="0" y="30" width="900" height="210" fill="#1a1b26"/>"##
     )
     .unwrap();
     writeln!(
         w,
-        r#"  <rect x="0.5" y="0.5" width="899" height="239" rx="14" fill="none" stroke="{}" stroke-width="1"/>"#,
-        t.border
+        r##"    <line x1="0" y1="30" x2="900" y2="30" stroke="#1b1e2e" stroke-width="1"/>"##
     )
     .unwrap();
-    writeln!(w).unwrap();
 
-    writeln!(w, "  <!-- arch-mountain mark -->").unwrap();
+    // everything textual shares the mono stack.
     writeln!(
         w,
-        r#"  <g transform="translate(130,118)" filter="url(#glow)">"#
+        r##"    <g font-family="ui-monospace, 'JetBrains Mono', 'Fira Code', monospace">"##
     )
     .unwrap();
-    writeln!(
-        w,
-        r#"    <polygon points="0,-70 70,70 -70,70" fill="none" stroke="url(#mark)" stroke-width="2.5" stroke-linejoin="round"/>"#
-    )
-    .unwrap();
-    writeln!(
-        w,
-        r#"    <polygon points="0,-42 52,56 -52,56" fill="none" stroke="{}" stroke-width="1.4" stroke-linejoin="round" opacity="0.55"/>"#,
-        t.mark_mid
-    )
-    .unwrap();
-    writeln!(
-        w,
-        r#"    <polygon points="0,-14 28,42 -28,42" fill="url(#mark)" opacity="0.9"/>"#
-    )
-    .unwrap();
-    writeln!(w, "  </g>").unwrap();
-    writeln!(
-        w,
-        r#"  <text x="130" y="222" font-family="JetBrains Mono, ui-monospace, monospace" font-size="11" fill="{}" text-anchor="middle">/* arch · niri */</text>"#,
-        t.caption
-    )
-    .unwrap();
-    writeln!(w).unwrap();
 
+    // titlebar: traffic lights + centered tab label.
+    for (i, fill) in ["#f7768e", "#e0af68", "#9ece6a"].iter().enumerate() {
+        let cx = 18 + i as u32 * 20;
+        writeln!(
+            w,
+            r##"      <circle cx="{cx}" cy="15" r="5" fill="{fill}"/>"##
+        )
+        .unwrap();
+    }
     writeln!(
         w,
-        r#"  <line x1="248" y1="48" x2="248" y2="192" stroke="{}" stroke-width="1"/>"#,
-        t.divider
+        r##"      <text x="450" y="19.5" text-anchor="middle" font-size="12" font-weight="500" fill="#a9b1d6">foolish@arch: ~/.dotfiles</text>"##
     )
     .unwrap();
-    writeln!(w).unwrap();
 
-    writeln!(w, "  <!-- header -->").unwrap();
+    // left gutter: arch-mountain mark (two nested outlines) + caption.
+    writeln!(w, r##"      <g filter="url(#glow)" fill="none" stroke="url(#mark)" stroke-width="2" stroke-linejoin="round">"##).unwrap();
+    writeln!(w, r##"        <polygon points="150,66 98,176 202,176"/>"##).unwrap();
     writeln!(
         w,
-        r#"  <text x="280" y="58" font-family="JetBrains Mono, ui-monospace, monospace" font-size="22" font-weight="700" filter="url(#glow)">"#
+        r##"        <polygon points="150,104 126,176 174,176"/>"##
     )
     .unwrap();
-    writeln!(w, r#"    <tspan fill="url(#accent)">foolish-dev</tspan>"#).unwrap();
+    writeln!(w, "      </g>").unwrap();
     writeln!(
         w,
-        r#"    <tspan dx="6" fill="{}" font-weight="500">@</tspan>"#,
-        t.at_sign
+        r##"      <text x="150" y="202" text-anchor="middle" font-size="11" fill="#565f89">/* arch · niri */</text>"##
     )
     .unwrap();
-    writeln!(w, r#"    <tspan dx="4" fill="{}">arch</tspan>"#, t.host).unwrap();
-    writeln!(w, "  </text>").unwrap();
     writeln!(
         w,
-        r#"  <line x1="280" y1="72" x2="860" y2="72" stroke="{}" stroke-width="1"/>"#,
-        t.divider
+        r##"      <line x1="300" y1="46" x2="300" y2="206" stroke="#414868" stroke-width="1"/>"##
     )
     .unwrap();
-    writeln!(w).unwrap();
 
-    writeln!(w, "  <!-- info rows -->").unwrap();
+    // right content: the live prompt, glowing to match the mark.
     writeln!(
         w,
-        r#"  <g font-family="JetBrains Mono, ui-monospace, monospace" font-size="14">"#
+        r##"      <text x="{ROW_KEY_X}" y="66" font-size="14" xml:space="preserve" filter="url(#glow)"><tspan fill="#9ece6a" font-weight="600">foolish@arch</tspan><tspan fill="#7aa2f7">:~</tspan><tspan fill="#bb9af7">$</tspan><tspan fill="#c0caf5"> neofetch</tspan></text>"##
     )
     .unwrap();
+
+    // neofetch rows.
     for (i, row) in ROWS.iter().enumerate() {
-        let y = ROW_Y_FIRST + (i as u32) * ROW_Y_STEP;
-        write_row(t, row, y, w);
+        let y = ROW_Y0 + i as u32 * ROW_STEP;
+        writeln!(
+            w,
+            r##"      <text x="{ROW_KEY_X}" y="{y}" font-size="13" font-weight="600" fill="#7dcfff">{}</text>"##,
+            row.key
+        )
+        .unwrap();
+        writeln!(
+            w,
+            r##"      <text x="{ROW_VAL_X}" y="{y}" font-size="13" fill="#a9b1d6">{}</text>"##,
+            row.val
+        )
+        .unwrap();
     }
-    writeln!(w, "  </g>").unwrap();
-    writeln!(w).unwrap();
 
-    writeln!(w, "  <!-- {} -->", t.palette_note).unwrap();
-    writeln!(w, r#"  <g transform="translate(778,218)">"#).unwrap();
-    for (i, color) in t.palette.iter().enumerate() {
-        let cx = (i as u32) * 13;
-        writeln!(w, r#"    <circle cx="{cx}" cy="0" r="4" fill="{color}"/>"#).unwrap();
+    // blinking block cursor after the last readout line.
+    let cursor_y = ROW_Y0 + (ROWS.len() as u32 - 1) * ROW_STEP;
+    writeln!(
+        w,
+        r##"      <rect x="628" y="{}" width="9" height="14" fill="#c0caf5"><animate attributeName="opacity" values="1;1;0;0" dur="1.1s" repeatCount="indefinite"/></rect>"##,
+        cursor_y - 11
+    )
+    .unwrap();
+
+    writeln!(w, "    </g>").unwrap();
+
+    // palette dots, bottom-right.
+    for (i, color) in PALETTE.iter().enumerate() {
+        let cx = 792 + i as u32 * 14;
+        writeln!(
+            w,
+            r##"    <circle cx="{cx}" cy="222" r="4" fill="{color}"/>"##
+        )
+        .unwrap();
     }
+
     writeln!(w, "  </g>").unwrap();
+    // border on top so it stays crisp over the fills.
+    writeln!(
+        w,
+        r##"  <rect x="0.5" y="0.5" width="899" height="239" rx="12" fill="none" stroke="#414868" stroke-width="1"/>"##
+    )
+    .unwrap();
     writeln!(w, "</svg>").unwrap();
+
     s
 }
 
 fn main() -> std::io::Result<()> {
-    let assets = PathBuf::from(env!("CARGO_MANIFEST_DIR"))
+    let path = PathBuf::from(env!("CARGO_MANIFEST_DIR"))
         .join("..")
         .join("..")
-        .join("assets");
-    let path = assets.join(LIGHT.file);
-    std::fs::write(&path, render(&LIGHT))?;
+        .join("assets")
+        .join("banner-light.svg");
+    std::fs::write(&path, render())?;
     println!("wrote {}", path.display());
     Ok(())
 }
@@ -366,14 +219,26 @@ fn main() -> std::io::Result<()> {
 mod tests {
     use super::*;
 
-    // The committed SVGs are generated artifacts; guard against them drifting
-    // from the generator. If this fails, run `cargo run` to regenerate.
+    // The committed SVG is a generated artifact; guard against it drifting from
+    // the generator. If this fails, run `cargo run` in tools/banner-gen.
     #[test]
-    fn committed_assets_match_render() {
+    fn committed_asset_matches_render() {
         assert_eq!(
-            render(&LIGHT),
+            render(),
             include_str!("../../../assets/banner-light.svg"),
             "assets/banner-light.svg is stale — run `cargo run` in tools/banner-gen"
         );
+    }
+
+    #[test]
+    fn rows_have_no_xml_metacharacters() {
+        for row in ROWS {
+            for text in [row.key, row.val] {
+                assert!(
+                    !text.contains(['&', '<', '>', '"']) && !text.contains("--"),
+                    "row text must stay XML-safe: {text:?}"
+                );
+            }
+        }
     }
 }
