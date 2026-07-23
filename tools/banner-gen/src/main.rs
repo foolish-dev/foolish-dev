@@ -157,37 +157,46 @@ fn render() -> String {
     // neofetch rows.
     for (i, row) in ROWS.iter().enumerate() {
         let y = ROW_Y0 + i as u32 * ROW_STEP;
+        // each row fades in on load, like neofetch printing line by line.
+        let begin = format!("{:.2}", 0.35 + i as f64 * 0.13);
         writeln!(
             w,
-            r##"      <text x="{ROW_KEY_X}" y="{y}" font-size="13" font-weight="600" fill="#7dcfff">{}</text>"##,
+            r##"      <g opacity="0"><animate attributeName="opacity" from="0" to="1" begin="{begin}s" dur="0.45s" fill="freeze"/>"##
+        )
+        .unwrap();
+        writeln!(
+            w,
+            r##"        <text x="{ROW_KEY_X}" y="{y}" font-size="13" font-weight="600" fill="#7dcfff">{}</text>"##,
             row.key
         )
         .unwrap();
         writeln!(
             w,
-            r##"      <text x="{ROW_VAL_X}" y="{y}" font-size="13" fill="#a9b1d6">{}</text>"##,
+            r##"        <text x="{ROW_VAL_X}" y="{y}" font-size="13" fill="#a9b1d6">{}</text>"##,
             row.val
         )
         .unwrap();
+        writeln!(w, "      </g>").unwrap();
     }
 
-    // blinking block cursor after the last readout line.
+    // block cursor: appears once the readout has printed, then blinks.
     let cursor_y = ROW_Y0 + (ROWS.len() as u32 - 1) * ROW_STEP;
     writeln!(
         w,
-        r##"      <rect x="628" y="{}" width="9" height="14" fill="#c0caf5"><animate attributeName="opacity" values="1;1;0;0" dur="1.1s" repeatCount="indefinite"/></rect>"##,
+        r##"      <rect x="628" y="{}" width="9" height="14" fill="#c0caf5" opacity="0"><animate attributeName="opacity" values="1;1;0;0" dur="1.1s" begin="1.5s" repeatCount="indefinite"/></rect>"##,
         cursor_y - 11
     )
     .unwrap();
 
     writeln!(w, "    </g>").unwrap();
 
-    // palette dots, bottom-right.
+    // palette dots, bottom-right — a slow staggered shimmer.
     for (i, color) in PALETTE.iter().enumerate() {
         let cx = 792 + i as u32 * 14;
+        let begin = format!("{:.1}", i as f64 * 0.2);
         writeln!(
             w,
-            r##"    <circle cx="{cx}" cy="214" r="4" fill="{color}"/>"##
+            r##"    <circle cx="{cx}" cy="214" r="4" fill="{color}"><animate attributeName="opacity" values="1;0.35;1" dur="2.4s" begin="{begin}s" repeatCount="indefinite"/></circle>"##
         )
         .unwrap();
     }
