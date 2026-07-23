@@ -57,6 +57,10 @@ foolish@arch ~ $ links
 
 [github.com/foolish-dev](https://github.com/foolish-dev) · [huggingface.co/FoolDev](https://huggingface.co/FoolDev)
 
+```console
+foolish@arch ~ $ coffee
+```
+
 [![Buy me a coffee — support foolish-dev's work on agents, models, and dotfiles](https://img.shields.io/badge/%E2%98%95%20coffee-e0af68?style=for-the-badge&logo=buymeacoffee&logoColor=1a1b26)](https://buymeacoffee.com/cardoffoolm)
 
 ![foolish-dev contribution graph animated as a snake eating the contribution dots](https://raw.githubusercontent.com/foolish-dev/foolish-dev/output/snake.svg#gh-dark-mode-only)
