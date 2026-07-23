@@ -1,13 +1,6 @@
 [![foolish-dev — a themed terminal session on arch + niri + tokyo night](assets/banner-light.svg)](https://github.com/foolish-dev)
 
-```console
-foolish@arch ~ $ whoami
-foolish-dev  ·  FoolDev @ hugging face
-foolish@arch ~ $ cat .plan
-// build small models, sharp tools, and a desktop i can rebuild from scratch.
-```
-
-fine-tuned llms, rust coding agents, and dotfiles that come up from bare metal — all on arch + niri + tokyo night. lowercase, terminal-native, no corporate voice.
+[![buy me a coffee — support foolish-dev's work on agents, models, and dotfiles](assets/coffee.svg)](https://buymeacoffee.com/cardoffoolm)
 
 ![arch](https://img.shields.io/badge/arch-1a1b26?style=flat-square&logo=archlinux&logoColor=7dcfff)
 ![niri](https://img.shields.io/badge/niri-1a1b26?style=flat-square&logo=wayland&logoColor=7aa2f7)
@@ -17,6 +10,15 @@ fine-tuned llms, rust coding agents, and dotfiles that come up from bare metal �
 ![rust](https://img.shields.io/badge/rust-1a1b26?style=flat-square&logo=rust&logoColor=e0af68)
 ![ollama](https://img.shields.io/badge/ollama-1a1b26?style=flat-square&logo=ollama&logoColor=c0caf5)
 ![hugging face](https://img.shields.io/badge/hugging%20face-1a1b26?style=flat-square&logo=huggingface&logoColor=e0af68)
+
+```console
+foolish@arch ~ $ whoami
+foolish-dev  ·  FoolDev @ hugging face
+foolish@arch ~ $ cat .plan
+// build small models, sharp tools, and a desktop i can rebuild from scratch.
+```
+
+fine-tuned llms, rust coding agents, and dotfiles that come up from bare metal — all on arch + niri + tokyo night. lowercase, terminal-native, no corporate voice.
 
 ---
 
@@ -65,5 +67,3 @@ foolish@arch ~ $ links
 ```
 
 [github.com/foolish-dev](https://github.com/foolish-dev) · [huggingface.co/FoolDev](https://huggingface.co/FoolDev) · [cardoffools@gmail.com](mailto:cardoffools@gmail.com)
-
-[![buy me a coffee — support foolish-dev's work on agents, models, and dotfiles](assets/coffee.svg)](https://buymeacoffee.com/cardoffoolm)
