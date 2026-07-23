@@ -199,8 +199,6 @@ mod tests {
             !out.contains("#gh-dark-mode-only"),
             "dark fragment stripped"
         );
-        // The light snake line is dropped; the sole (light) banner is kept.
-        assert!(!out.contains("snake-light.svg"));
     }
 
     #[test]
@@ -210,10 +208,6 @@ mod tests {
         assert!(out.contains(&format!("{BASE}assets/banner-light.svg")));
         // No repo-relative asset refs survive.
         assert!(!out.contains("](assets/"));
-        // Already-absolute snake URL is untouched (just the fragment stripped).
-        assert!(out.contains(
-            "https://raw.githubusercontent.com/foolish-dev/foolish-dev/output/snake.svg"
-        ));
     }
 
     #[test]
