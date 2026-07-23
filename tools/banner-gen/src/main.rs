@@ -1,9 +1,9 @@
 use std::fmt::Write as _;
 use std::path::PathBuf;
 
-// A self-contained Tokyo Night terminal window: titlebar + traffic lights, an
-// arch-mountain mark in the left gutter, and a neofetch readout on the right.
-// The card paints its own background so it reads on both light and dark GitHub.
+// A self-contained Tokyo Night neofetch card: an arch-mountain mark in the left
+// gutter and a neofetch readout on the right. The card paints its own background
+// so it reads on both light and dark GitHub.
 //
 // Row values are emitted into the SVG verbatim (no XML escaping). Keep every
 // key/value free of XML metacharacters (& < > ") and of `--`. Static data only.
@@ -50,7 +50,7 @@ const PALETTE: [&str; 6] = [
 
 const ROW_KEY_X: u32 = 324;
 const ROW_VAL_X: u32 = 430;
-const ROW_Y0: u32 = 88;
+const ROW_Y0: u32 = 58;
 const ROW_STEP: u32 = 20;
 
 fn render() -> String {
@@ -59,7 +59,7 @@ fn render() -> String {
 
     writeln!(
         w,
-        r##"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 240" role="img" aria-label="foolish-dev — a themed terminal session on arch + niri + tokyo night">"##
+        r##"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 210" role="img" aria-label="foolish-dev — a neofetch card on arch + niri + tokyo night">"##
     )
     .unwrap();
 
@@ -72,7 +72,7 @@ fn render() -> String {
     .unwrap();
     writeln!(
         w,
-        r##"    <clipPath id="card"><rect x="0" y="0" width="900" height="240" rx="12"/></clipPath>"##
+        r##"    <clipPath id="card"><rect x="0" y="0" width="900" height="210" rx="12"/></clipPath>"##
     )
     .unwrap();
     writeln!(
@@ -82,26 +82,11 @@ fn render() -> String {
     .unwrap();
     writeln!(w, "  </defs>").unwrap();
 
-    // window body, titlebar, and terminal canvas — clipped to rounded corners.
-    writeln!(
-        w,
-        r##"  <rect x="0" y="0" width="900" height="240" rx="12" fill="#24283b"/>"##
-    )
-    .unwrap();
+    // dark card, clipped to rounded corners.
     writeln!(w, r##"  <g clip-path="url(#card)">"##).unwrap();
     writeln!(
         w,
-        r##"    <rect x="0" y="0" width="900" height="30" fill="#2f334d"/>"##
-    )
-    .unwrap();
-    writeln!(
-        w,
-        r##"    <rect x="0" y="30" width="900" height="210" fill="#1a1b26"/>"##
-    )
-    .unwrap();
-    writeln!(
-        w,
-        r##"    <line x1="0" y1="30" x2="900" y2="30" stroke="#1b1e2e" stroke-width="1"/>"##
+        r##"    <rect x="0" y="0" width="900" height="210" fill="#1a1b26"/>"##
     )
     .unwrap();
 
@@ -112,45 +97,26 @@ fn render() -> String {
     )
     .unwrap();
 
-    // titlebar: traffic lights + centered tab label.
-    for (i, fill) in ["#f7768e", "#e0af68", "#9ece6a"].iter().enumerate() {
-        let cx = 18 + i as u32 * 20;
-        writeln!(
-            w,
-            r##"      <circle cx="{cx}" cy="15" r="5" fill="{fill}"/>"##
-        )
-        .unwrap();
-    }
-    writeln!(
-        w,
-        r##"      <text x="450" y="19.5" text-anchor="middle" font-size="12" font-weight="500" fill="#a9b1d6">foolish@arch: ~/.dotfiles</text>"##
-    )
-    .unwrap();
-
     // left gutter: arch-mountain mark (two nested outlines) + caption.
     writeln!(w, r##"      <g filter="url(#glow)" fill="none" stroke="url(#mark)" stroke-width="2" stroke-linejoin="round">"##).unwrap();
-    writeln!(w, r##"        <polygon points="150,66 98,176 202,176"/>"##).unwrap();
-    writeln!(
-        w,
-        r##"        <polygon points="150,104 126,176 174,176"/>"##
-    )
-    .unwrap();
+    writeln!(w, r##"        <polygon points="150,36 98,146 202,146"/>"##).unwrap();
+    writeln!(w, r##"        <polygon points="150,74 126,146 174,146"/>"##).unwrap();
     writeln!(w, "      </g>").unwrap();
     writeln!(
         w,
-        r##"      <text x="150" y="202" text-anchor="middle" font-size="11" fill="#565f89">/* arch · niri */</text>"##
+        r##"      <text x="150" y="172" text-anchor="middle" font-size="11" fill="#565f89">/* arch · niri */</text>"##
     )
     .unwrap();
     writeln!(
         w,
-        r##"      <line x1="300" y1="46" x2="300" y2="206" stroke="#414868" stroke-width="1"/>"##
+        r##"      <line x1="300" y1="16" x2="300" y2="176" stroke="#414868" stroke-width="1"/>"##
     )
     .unwrap();
 
     // right content: the live prompt, glowing to match the mark.
     writeln!(
         w,
-        r##"      <text x="{ROW_KEY_X}" y="62" font-size="14" xml:space="preserve" filter="url(#glow)"><tspan fill="#9ece6a" font-weight="600">foolish@arch</tspan><tspan fill="#7aa2f7">:~</tspan><tspan fill="#bb9af7">$</tspan><tspan fill="#c0caf5"> neofetch</tspan></text>"##
+        r##"      <text x="{ROW_KEY_X}" y="32" font-size="14" xml:space="preserve" filter="url(#glow)"><tspan fill="#9ece6a" font-weight="600">foolish@arch</tspan><tspan fill="#7aa2f7">:~</tspan><tspan fill="#bb9af7">$</tspan><tspan fill="#c0caf5"> neofetch</tspan></text>"##
     )
     .unwrap();
 
@@ -196,7 +162,7 @@ fn render() -> String {
         let begin = format!("{:.1}", i as f64 * 0.2);
         writeln!(
             w,
-            r##"    <circle cx="{cx}" cy="214" r="4" fill="{color}"><animate attributeName="opacity" values="1;0.35;1" dur="2.4s" begin="{begin}s" repeatCount="indefinite"/></circle>"##
+            r##"    <circle cx="{cx}" cy="184" r="4" fill="{color}"><animate attributeName="opacity" values="1;0.35;1" dur="2.4s" begin="{begin}s" repeatCount="indefinite"/></circle>"##
         )
         .unwrap();
     }
