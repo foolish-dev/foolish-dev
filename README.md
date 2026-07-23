@@ -22,6 +22,8 @@ Thanatos-27B   dense      ~17 gb
 ```sh
 # run janus straight from the hub
 ollama run hf.co/FoolDev/Janus-35B:Q4_K_M
+# run thanatos straight from the hub
+ollama run hf.co/FoolDev/Thanatos-27B:Q4_K_M
 ```
 
 ---
