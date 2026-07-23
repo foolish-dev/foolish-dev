@@ -50,8 +50,8 @@ const PALETTE: [&str; 6] = [
 
 const ROW_KEY_X: u32 = 324;
 const ROW_VAL_X: u32 = 430;
-const ROW_Y0: u32 = 96;
-const ROW_STEP: u32 = 22;
+const ROW_Y0: u32 = 88;
+const ROW_STEP: u32 = 20;
 
 fn render() -> String {
     let mut s = String::with_capacity(4096);
@@ -150,7 +150,7 @@ fn render() -> String {
     // right content: the live prompt, glowing to match the mark.
     writeln!(
         w,
-        r##"      <text x="{ROW_KEY_X}" y="66" font-size="14" xml:space="preserve" filter="url(#glow)"><tspan fill="#9ece6a" font-weight="600">foolish@arch</tspan><tspan fill="#7aa2f7">:~</tspan><tspan fill="#bb9af7">$</tspan><tspan fill="#c0caf5"> neofetch</tspan></text>"##
+        r##"      <text x="{ROW_KEY_X}" y="62" font-size="14" xml:space="preserve" filter="url(#glow)"><tspan fill="#9ece6a" font-weight="600">foolish@arch</tspan><tspan fill="#7aa2f7">:~</tspan><tspan fill="#bb9af7">$</tspan><tspan fill="#c0caf5"> neofetch</tspan></text>"##
     )
     .unwrap();
 
@@ -187,7 +187,7 @@ fn render() -> String {
         let cx = 792 + i as u32 * 14;
         writeln!(
             w,
-            r##"    <circle cx="{cx}" cy="222" r="4" fill="{color}"/>"##
+            r##"    <circle cx="{cx}" cy="214" r="4" fill="{color}"/>"##
         )
         .unwrap();
     }
