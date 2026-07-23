@@ -2,11 +2,13 @@
   <rect x="0.75" y="0.75" width="208.5" height="50.5" rx="10" fill="#24283b" stroke="#e0af68" stroke-width="1.5"/>
   <!-- steam -->
   <g stroke="#7dcfff" stroke-width="1.7" stroke-linecap="round" fill="none">
-    <path d="M25 21 q -3.5 -3 0 -7 q 3.5 -4 0 -8">
-      <animate attributeName="opacity" values="0.12;0.85;0.12" dur="2.4s" repeatCount="indefinite"/>
+    <path d="M25 21 q -3.5 -3 0 -7 q 3.5 -4 0 -8" opacity="0">
+      <animate attributeName="opacity" values="0;0.85;0.85;0" keyTimes="0;0.25;0.7;1" dur="2.6s" repeatCount="indefinite"/>
+      <animateTransform attributeName="transform" type="translate" values="0 5;0 -5" dur="2.6s" repeatCount="indefinite"/>
     </path>
-    <path d="M33 21 q 3.5 -3 0 -7 q -3.5 -4 0 -8">
-      <animate attributeName="opacity" values="0.75;0.12;0.75" dur="2.4s" begin="0.5s" repeatCount="indefinite"/>
+    <path d="M33 21 q 3.5 -3 0 -7 q -3.5 -4 0 -8" opacity="0">
+      <animate attributeName="opacity" values="0;0.75;0.75;0" keyTimes="0;0.25;0.7;1" dur="2.6s" begin="1.3s" repeatCount="indefinite"/>
+      <animateTransform attributeName="transform" type="translate" values="0 5;0 -5" dur="2.6s" begin="1.3s" repeatCount="indefinite"/>
     </path>
   </g>
   <!-- cup -->
