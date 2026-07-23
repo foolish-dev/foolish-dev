@@ -87,31 +87,6 @@ struct Theme {
     palette_note: &'static str,
 }
 
-const DARK: Theme = Theme {
-    file: "banner.svg",
-    bg_start: "#1a1b26",
-    bg_end: "#16161e",
-    accent: ["#7aa2f7", "#bb9af7", "#7dcfff"],
-    mark: ["#7dcfff", "#7aa2f7", "#bb9af7"],
-    glow_stddev: "2.5",
-    grid: "#414868",
-    grid_opacity: "0.3",
-    border: "#414868",
-    caption: "#565f89",
-    divider: "#414868",
-    at_sign: "#565f89",
-    host: "#7dcfff",
-    mark_mid: "#7aa2f7",
-    label_fill: "#bb9af7",
-    primary: "#c0caf5",
-    dim: "#9aa5ce",
-    sep_fill: "#565f89",
-    palette: [
-        "#f7768e", "#e0af68", "#9ece6a", "#7dcfff", "#7aa2f7", "#bb9af7",
-    ],
-    palette_note: "TN palette dots",
-};
-
 const LIGHT: Theme = Theme {
     file: "banner-light.svg",
     bg_start: "#e1e2e7",
@@ -381,11 +356,9 @@ fn main() -> std::io::Result<()> {
         .join("..")
         .join("..")
         .join("assets");
-    for theme in [&DARK, &LIGHT] {
-        let path = assets.join(theme.file);
-        std::fs::write(&path, render(theme))?;
-        println!("wrote {}", path.display());
-    }
+    let path = assets.join(LIGHT.file);
+    std::fs::write(&path, render(&LIGHT))?;
+    println!("wrote {}", path.display());
     Ok(())
 }
 
@@ -397,11 +370,6 @@ mod tests {
     // from the generator. If this fails, run `cargo run` to regenerate.
     #[test]
     fn committed_assets_match_render() {
-        assert_eq!(
-            render(&DARK),
-            include_str!("../../../assets/banner.svg"),
-            "assets/banner.svg is stale — run `cargo run` in tools/banner-gen"
-        );
         assert_eq!(
             render(&LIGHT),
             include_str!("../../../assets/banner-light.svg"),

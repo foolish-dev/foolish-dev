@@ -199,8 +199,7 @@ mod tests {
             !out.contains("#gh-dark-mode-only"),
             "dark fragment stripped"
         );
-        // The light banner + light snake lines are gone entirely.
-        assert!(!out.contains("banner-light.svg"));
+        // The light snake line is dropped; the sole (light) banner is kept.
         assert!(!out.contains("snake-light.svg"));
     }
 
@@ -208,7 +207,7 @@ mod tests {
     fn absolutises_relative_assets_only() {
         let out = staged();
         // Relative banner ref rewritten to the raw base.
-        assert!(out.contains(&format!("{BASE}assets/banner.svg")));
+        assert!(out.contains(&format!("{BASE}assets/banner-light.svg")));
         // No repo-relative asset refs survive.
         assert!(!out.contains("](assets/"));
         // Already-absolute snake URL is untouched (just the fragment stripped).

@@ -1,7 +1,6 @@
 # foolish-dev
 
-[![Banner card on Tokyo Night](assets/banner.svg#gh-dark-mode-only)](https://github.com/foolish-dev)
-[![Banner card on Tokyo Night](assets/banner-light.svg#gh-light-mode-only)](https://github.com/foolish-dev)
+[![Banner card on Tokyo Night](assets/banner-light.svg)](https://github.com/foolish-dev)
 
 [![Buy me a coffee — support foolish-dev's work on agents, models, and dotfiles](https://img.shields.io/badge/%E2%98%95%20coffee-e0af68?style=for-the-badge&logo=buymeacoffee&logoColor=1a1b26)](https://buymeacoffee.com/cardoffoolm)
 
