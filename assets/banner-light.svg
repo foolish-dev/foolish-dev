@@ -58,5 +58,4 @@
     <circle cx="848" cy="214" r="4" fill="#7aa2f7"><animate attributeName="opacity" values="1;0.35;1" dur="2.4s" begin="0.8s" repeatCount="indefinite"/></circle>
     <circle cx="862" cy="214" r="4" fill="#bb9af7"><animate attributeName="opacity" values="1;0.35;1" dur="2.4s" begin="1.0s" repeatCount="indefinite"/></circle>
   </g>
-  <rect x="0.5" y="0.5" width="899" height="239" rx="12" fill="none" stroke="#414868" stroke-width="1"/>
 </svg>

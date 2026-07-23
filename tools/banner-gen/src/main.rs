@@ -202,12 +202,6 @@ fn render() -> String {
     }
 
     writeln!(w, "  </g>").unwrap();
-    // border on top so it stays crisp over the fills.
-    writeln!(
-        w,
-        r##"  <rect x="0.5" y="0.5" width="899" height="239" rx="12" fill="none" stroke="#414868" stroke-width="1"/>"##
-    )
-    .unwrap();
     writeln!(w, "</svg>").unwrap();
 
     s
