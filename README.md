@@ -9,10 +9,14 @@ foolish@arch ~ $ cat .plan
 
 fine-tuned llms, rust coding agents, and dotfiles that come up from bare metal — all on arch + niri + tokyo night. lowercase, terminal-native, no corporate voice.
 
-```console
-foolish@arch ~ $ tags
-rust · nvim · arch · niri · wayland · tokyo-night · llm · fine-tuning · lora · gguf · quantization · ollama · huggingface · tui
-```
+![arch](https://img.shields.io/badge/arch-1a1b26?style=flat-square&logo=archlinux&logoColor=7dcfff)
+![niri](https://img.shields.io/badge/niri-1a1b26?style=flat-square&logo=wayland&logoColor=7aa2f7)
+![zsh](https://img.shields.io/badge/zsh-1a1b26?style=flat-square&logo=zsh&logoColor=9ece6a)
+![nvim](https://img.shields.io/badge/nvim-1a1b26?style=flat-square&logo=neovim&logoColor=9ece6a)
+![tmux](https://img.shields.io/badge/tmux-1a1b26?style=flat-square&logo=tmux&logoColor=73daca)
+![rust](https://img.shields.io/badge/rust-1a1b26?style=flat-square&logo=rust&logoColor=e0af68)
+![ollama](https://img.shields.io/badge/ollama-1a1b26?style=flat-square&logo=ollama&logoColor=c0caf5)
+![hugging face](https://img.shields.io/badge/hugging%20face-1a1b26?style=flat-square&logo=huggingface&logoColor=e0af68)
 
 ---
 
