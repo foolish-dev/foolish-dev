@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - README.md
+      - tools/hf-sync/**
       - .github/workflows/sync-hf-profile.yml
   workflow_dispatch:
     inputs:
@@ -32,94 +33,21 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
-      - name: Cache pip
+      # cargo is preinstalled on ubuntu-latest; just cache the registry + build.
+      - name: Cache cargo
         uses: actions/cache@v6
         with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-huggingface-${{ hashFiles('.github/workflows/sync-hf-profile.yml') }}
-          restore-keys: ${{ runner.os }}-pip-
-
-      - uses: actions/setup-python@v6
-        with:
-          python-version: "3.12"
-
-      - name: Install huggingface_hub
-        run: pip install --quiet "huggingface_hub>=0.25"
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            tools/hf-sync/target
+          key: ${{ runner.os }}-cargo-hf-sync-${{ hashFiles('tools/hf-sync/Cargo.lock') }}
+          restore-keys: ${{ runner.os }}-cargo-hf-sync-
 
       - name: Build staged README
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
-        run: |
-          mkdir -p .hf-out
-          python <<'PY'
-          import os, re, pathlib, urllib.request
-          repo = os.environ["GITHUB_REPOSITORY"]  # foolish-dev/foolish-dev
-          base = f"https://raw.githubusercontent.com/{repo}/main/"
-
-          body = pathlib.Path("README.md").read_text(encoding="utf-8")
-
-          # GitHub renders #gh-{dark,light}-mode-only image variants based on
-          # the viewer's theme; HF has no equivalent and would stack both
-          # variants. Keep the dark variant (canonical), drop the light line,
-          # and strip the dark fragment so the URL stays clean.
-          body = re.sub(r"^.*#gh-light-mode-only.*\n?", "", body, flags=re.MULTILINE)
-          body = body.replace("#gh-dark-mode-only", "")
-
-          # Rewrite relative asset references (src=, srcset=, and ![](assets/...))
-          # so HF can resolve images that live only in the GitHub repo.
-          body = re.sub(
-              r'((?:src|srcset)=")(?!https?://|/|#)(assets/[^"]+)(")',
-              lambda m: m.group(1) + base + m.group(2) + m.group(3),
-              body,
-          )
-          body = re.sub(
-              r'(!\[[^\]]*\]\()(?!https?://|/|#)(assets/[^)]+)(\))',
-              lambda m: m.group(1) + base + m.group(2) + m.group(3),
-              body,
-          )
-
-          # Strip any leading YAML frontmatter that may already be in the
-          # GitHub README (we replace it with the live Space's frontmatter).
-          if body.startswith("---\n"):
-              end = body.find("\n---\n", 4)
-              if end != -1:
-                  body = body[end + len("\n---\n"):].lstrip("\n")
-
-          # Fetch the live Space README and pull its YAML frontmatter so we
-          # don't clobber Space metadata (title, sdk: static, pinned, ...).
-          req = urllib.request.Request(
-              "https://huggingface.co/spaces/FoolDev/FoolDev/raw/main/README.md",
-              headers={"Authorization": f"Bearer {os.environ['HF_TOKEN']}"},
-          )
-          frontmatter = ""
-          try:
-              with urllib.request.urlopen(req, timeout=15) as r:
-                  cur = r.read().decode("utf-8")
-              if cur.startswith("---\n"):
-                  end = cur.find("\n---\n", 4)
-                  if end != -1:
-                      frontmatter = cur[: end + len("\n---\n")]
-          except Exception as e:
-              print(f"warning: could not fetch existing Space frontmatter: {e}")
-
-          # Fallback frontmatter if the Space README wasn't reachable.
-          if not frontmatter:
-              frontmatter = (
-                  "---\n"
-                  "title: FoolDev\n"
-                  "emoji: ⚡\n"
-                  "colorFrom: blue\n"
-                  "colorTo: purple\n"
-                  "sdk: static\n"
-                  "pinned: true\n"
-                  "short_description: agentic offsec · Janus 35B + Thanatos 27B · arch+niri\n"
-                  "---\n"
-              )
-
-          out = frontmatter + "\n" + body.lstrip("\n")
-          pathlib.Path(".hf-out/README.md").write_text(out, encoding="utf-8")
-          print(f"hf README: {len(out)} bytes (frontmatter preserved)")
-          PY
+        run: cargo run --quiet --manifest-path tools/hf-sync/Cargo.toml -- build
 
       - name: Upload staged README artifact (dry-run)
         if: env.DRY_RUN == 'true'
@@ -132,17 +60,4 @@ jobs:
         if: env.DRY_RUN != 'true'
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
-        run: |
-          python <<'PY'
-          import os
-          from huggingface_hub import HfApi
-          api = HfApi(token=os.environ["HF_TOKEN"])
-          api.upload_file(
-              path_or_fileobj=".hf-out/README.md",
-              path_in_repo="README.md",
-              repo_id="FoolDev/FoolDev",
-              repo_type="space",
-              commit_message=f"Sync README from {os.environ.get('GITHUB_REPOSITORY')}@{os.environ.get('GITHUB_SHA','')[:7]}",
-          )
-          print("Uploaded README.md to space FoolDev/FoolDev")
-          PY
+        run: cargo run --quiet --manifest-path tools/hf-sync/Cargo.toml -- push

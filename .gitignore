@@ -1,2 +1,4 @@
 /tools/banner-gen/target/
+/tools/hf-sync/target/
+/.hf-out/
 *.bak*

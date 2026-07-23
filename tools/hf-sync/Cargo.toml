@@ -1,0 +1,10 @@
+[package]
+name = "hf-sync"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+regex = "1"
+ureq = "2"
+serde_json = "1"
+base64 = "0.22"
